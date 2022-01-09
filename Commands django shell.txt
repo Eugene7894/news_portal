@@ -1,4 +1,4 @@
-from news.models import *
+п»їfrom news.models import *
 
 u1 = User.objects.create_user(username='Petr')
 u2 = User.objects.create_user(username='Ivan')
@@ -14,29 +14,29 @@ Category.objects.create(categoryName='Politics')
 Category.objects.create(categoryName='Health')
 
 
-post1 = Post.objects.create(author=a1, categoryType='AR', title='Охрана здоровья граждан', text='''Охрана здоровья граждан - это совокупность мер политического, 
-экономического, правового, социального, культурного, научного, медицинского, санитарно-гигиенического и противоэпидемического характера, направленных на сохранение
- и укрепление физического и психического здоровья каждого человека, поддержание его долголетней активной жизни, предоставление ему медицинской помощи в случае 
-утраты здоровья.''')
+post1 = Post.objects.create(author=a1, categoryType='AR', title='РћС…СЂР°РЅР° Р·РґРѕСЂРѕРІСЊСЏ РіСЂР°Р¶РґР°РЅ', text='''РћС…СЂР°РЅР° Р·РґРѕСЂРѕРІСЊСЏ РіСЂР°Р¶РґР°РЅ - СЌС‚Рѕ СЃРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РјРµСЂ РїРѕР»РёС‚РёС‡РµСЃРєРѕРіРѕ, 
+СЌРєРѕРЅРѕРјРёС‡РµСЃРєРѕРіРѕ, РїСЂР°РІРѕРІРѕРіРѕ, СЃРѕС†РёР°Р»СЊРЅРѕРіРѕ, РєСѓР»СЊС‚СѓСЂРЅРѕРіРѕ, РЅР°СѓС‡РЅРѕРіРѕ, РјРµРґРёС†РёРЅСЃРєРѕРіРѕ, СЃР°РЅРёС‚Р°СЂРЅРѕ-РіРёРіРёРµРЅРёС‡РµСЃРєРѕРіРѕ Рё РїСЂРѕС‚РёРІРѕСЌРїРёРґРµРјРёС‡РµСЃРєРѕРіРѕ С…Р°СЂР°РєС‚РµСЂР°, РЅР°РїСЂР°РІР»РµРЅРЅС‹С… РЅР° СЃРѕС…СЂР°РЅРµРЅРёРµ
+ Рё СѓРєСЂРµРїР»РµРЅРёРµ С„РёР·РёС‡РµСЃРєРѕРіРѕ Рё РїСЃРёС…РёС‡РµСЃРєРѕРіРѕ Р·РґРѕСЂРѕРІСЊСЏ РєР°Р¶РґРѕРіРѕ С‡РµР»РѕРІРµРєР°, РїРѕРґРґРµСЂР¶Р°РЅРёРµ РµРіРѕ РґРѕР»РіРѕР»РµС‚РЅРµР№ Р°РєС‚РёРІРЅРѕР№ Р¶РёР·РЅРё, РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРёРµ РµРјСѓ РјРµРґРёС†РёРЅСЃРєРѕР№ РїРѕРјРѕС‰Рё РІ СЃР»СѓС‡Р°Рµ 
+СѓС‚СЂР°С‚С‹ Р·РґРѕСЂРѕРІСЊСЏ.''')
 post1.postCategory.add(Category.objects.get(categoryName='Health'))
 post1.postCategory.add(Category.objects.get(categoryName='Politics'))
 
-post2 = Post.objects.create(author=a2, categoryType='AR', title='Как учиться меньше, но лучше', text='''
-Чередуйте предметы и темы, чтобы учиться было легче.
-Сосредотачивайтесь на одной задаче.
-Прокачайте навыки самообразования.
-Следите за самочувствием.
-Используйте интервальное повторение, чтобы лучше запоминать.''')
+post2 = Post.objects.create(author=a2, categoryType='AR', title='РљР°Рє СѓС‡РёС‚СЊСЃСЏ РјРµРЅСЊС€Рµ, РЅРѕ Р»СѓС‡С€Рµ', text='''
+Р§РµСЂРµРґСѓР№С‚Рµ РїСЂРµРґРјРµС‚С‹ Рё С‚РµРјС‹, С‡С‚РѕР±С‹ СѓС‡РёС‚СЊСЃСЏ Р±С‹Р»Рѕ Р»РµРіС‡Рµ.
+РЎРѕСЃСЂРµРґРѕС‚Р°С‡РёРІР°Р№С‚РµСЃСЊ РЅР° РѕРґРЅРѕР№ Р·Р°РґР°С‡Рµ.
+РџСЂРѕРєР°С‡Р°Р№С‚Рµ РЅР°РІС‹РєРё СЃР°РјРѕРѕР±СЂР°Р·РѕРІР°РЅРёСЏ.
+РЎР»РµРґРёС‚Рµ Р·Р° СЃР°РјРѕС‡СѓРІСЃС‚РІРёРµРј.
+РСЃРїРѕР»СЊР·СѓР№С‚Рµ РёРЅС‚РµСЂРІР°Р»СЊРЅРѕРµ РїРѕРІС‚РѕСЂРµРЅРёРµ, С‡С‚РѕР±С‹ Р»СѓС‡С€Рµ Р·Р°РїРѕРјРёРЅР°С‚СЊ.''')
 post2.postCategory.add(Category.objects.get(categoryName='Education'))
 
-post3 = Post.objects.create(author=a1, categoryType='NW', title='"Севилья" обыграла "Хетафе"', text='"Севилья" обыграла "Хетафе" и сократила отставание от лидирующего "Реала" до пяти очков')
+post3 = Post.objects.create(author=a1, categoryType='NW', title='"РЎРµРІРёР»СЊСЏ" РѕР±С‹РіСЂР°Р»Р° "РҐРµС‚Р°С„Рµ"', text='"РЎРµРІРёР»СЊСЏ" РѕР±С‹РіСЂР°Р»Р° "РҐРµС‚Р°С„Рµ" Рё СЃРѕРєСЂР°С‚РёР»Р° РѕС‚СЃС‚Р°РІР°РЅРёРµ РѕС‚ Р»РёРґРёСЂСѓСЋС‰РµРіРѕ "Р РµР°Р»Р°" РґРѕ РїСЏС‚Рё РѕС‡РєРѕРІ')
 post3.postCategory.add(Category.objects.get(categoryName='Sport'))
 
 
-Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=1).authorUser, text='Куда им до Реала')
-Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=2).authorUser, text='То ли еще будет!')
-Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=2).authorUser, text='Отлично, спасибо!')
-Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=1).authorUser, text='Очень круто!')
+Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=1).authorUser, text='РљСѓРґР° РёРј РґРѕ Р РµР°Р»Р°')
+Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=2).authorUser, text='РўРѕ Р»Рё РµС‰Рµ Р±СѓРґРµС‚!')
+Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=2).authorUser, text='РћС‚Р»РёС‡РЅРѕ, СЃРїР°СЃРёР±Рѕ!')
+Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=1).authorUser, text='РћС‡РµРЅСЊ РєСЂСѓС‚Рѕ!')
 
 
 for i in range(3):
@@ -70,7 +70,7 @@ a2.authorRate
 best_author = Author.objects.order_by('-authorRate')[:1]
 best_author.values('authorUser__username', 'authorRate')
 
-#for i in best_author: - вариант 2, сохранил для себя
+#for i in best_author: - РІР°СЂРёР°РЅС‚ 2, СЃРѕС…СЂР°РЅРёР» РґР»СЏ СЃРµР±СЏ
 #    i.authorRate
 #    i.authorUser.username
 
@@ -78,8 +78,8 @@ best_author.values('authorUser__username', 'authorRate')
 best_post = Post.objects.order_by('-rate')[:1] 
 b_p = best_post.get()
 
-print(f'Лучшая статья: создана {b_p.creationDate.strftime("%m/%d/%Y, %H:%M:%S")} авторства {b_p.author.authorUser.username} \
-с рейтингом статьи {b_p.rate} - "{b_p.title}": {b_p.preview()}')
+print(f'Р›СѓС‡С€Р°СЏ СЃС‚Р°С‚СЊСЏ: СЃРѕР·РґР°РЅР° {b_p.creationDate.strftime("%m/%d/%Y, %H:%M:%S")} Р°РІС‚РѕСЂСЃС‚РІР° {b_p.author.authorUser.username} \
+СЃ СЂРµР№С‚РёРЅРіРѕРј СЃС‚Р°С‚СЊРё {b_p.rate} - "{b_p.title}": {b_p.preview()}')
 
 comments_bp = Comment.objects.filter(commentPost=b_p).values('creationDate', 'commentUser__username', 'rate', 'text')
 for i in comments_bp:
