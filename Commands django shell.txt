@@ -1,0 +1,88 @@
+from news.models import *
+
+u1 = User.objects.create_user(username='Petr')
+u2 = User.objects.create_user(username='Ivan')
+
+
+a1 = Author.objects.create(authorUser=u1)
+a2 = Author.objects.create(authorUser=u2)
+
+
+Category.objects.create(categoryName='Education')
+Category.objects.create(categoryName='Sport')
+Category.objects.create(categoryName='Politics')
+Category.objects.create(categoryName='Health')
+
+
+post1 = Post.objects.create(author=a1, categoryType='AR', title='Охрана здоровья граждан', text='''Охрана здоровья граждан - это совокупность мер политического, 
+экономического, правового, социального, культурного, научного, медицинского, санитарно-гигиенического и противоэпидемического характера, направленных на сохранение
+ и укрепление физического и психического здоровья каждого человека, поддержание его долголетней активной жизни, предоставление ему медицинской помощи в случае 
+утраты здоровья.''')
+post1.postCategory.add(Category.objects.get(categoryName='Health'))
+post1.postCategory.add(Category.objects.get(categoryName='Politics'))
+
+post2 = Post.objects.create(author=a2, categoryType='AR', title='Как учиться меньше, но лучше', text='''
+Чередуйте предметы и темы, чтобы учиться было легче.
+Сосредотачивайтесь на одной задаче.
+Прокачайте навыки самообразования.
+Следите за самочувствием.
+Используйте интервальное повторение, чтобы лучше запоминать.''')
+post2.postCategory.add(Category.objects.get(categoryName='Education'))
+
+post3 = Post.objects.create(author=a1, categoryType='NW', title='"Севилья" обыграла "Хетафе"', text='"Севилья" обыграла "Хетафе" и сократила отставание от лидирующего "Реала" до пяти очков')
+post3.postCategory.add(Category.objects.get(categoryName='Sport'))
+
+
+Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=1).authorUser, text='Куда им до Реала')
+Comment.objects.create(commentPost=Post.objects.get(id=3), commentUser=Author.objects.get(id=2).authorUser, text='То ли еще будет!')
+Comment.objects.create(commentPost=Post.objects.get(id=1), commentUser=Author.objects.get(id=2).authorUser, text='Отлично, спасибо!')
+Comment.objects.create(commentPost=Post.objects.get(id=2), commentUser=Author.objects.get(id=1).authorUser, text='Очень круто!')
+
+
+for i in range(3):
+    post1.like()
+for i in range(8):
+    post2.like()
+post2.dislike()
+for i in range(5):
+    post3.like()
+for i in range(2):
+    post3.dislike()
+
+for i in range(3):
+    Comment.objects.get(id=1).like()
+Comment.objects.get(id=1).dislike()
+for i in range(2):
+    Comment.objects.get(id=2).dislike()
+for i in range(5):
+    Comment.objects.get(id=3).like()
+Comment.objects.get(id=3).dislike()
+for i in range(4):
+    Comment.objects.get(id=4).like()
+
+
+a1.update_rating()
+a1.authorRate
+a2.update_rating()
+a2.authorRate
+
+
+best_author = Author.objects.order_by('-authorRate')[:1]
+best_author.values('authorUser__username', 'authorRate')
+
+#for i in best_author: - вариант 2, сохранил для себя
+#    i.authorRate
+#    i.authorUser.username
+
+
+best_post = Post.objects.order_by('-rate')[:1] 
+b_p = best_post.get()
+
+print(f'Лучшая статья: создана {b_p.creationDate.strftime("%m/%d/%Y, %H:%M:%S")} авторства {b_p.author.authorUser.username} \
+с рейтингом статьи {b_p.rate} - "{b_p.title}": {b_p.preview()}')
+
+comments_bp = Comment.objects.filter(commentPost=b_p).values('creationDate', 'commentUser__username', 'rate', 'text')
+for i in comments_bp:
+    print(i)
+
+
