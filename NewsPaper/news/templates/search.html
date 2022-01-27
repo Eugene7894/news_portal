@@ -17,7 +17,7 @@ Search news
         <input type="submit" value="Найти">
     </form>
     <hr>
-    {% if news_search %}
+    {% if news_search and filter.qs %}
         <table>
             <tr>
                 <th>
