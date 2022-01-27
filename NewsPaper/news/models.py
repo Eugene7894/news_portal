@@ -19,9 +19,15 @@ class Author(models.Model):
         self.authorRate = pRat * 3 + cRat
         self.save()
 
+    def __str__(self):
+        return f'{self.authorUser.username}'
+
 
 class Category(models.Model):
     categoryName = models.CharField(max_length=64, unique=True)
+
+    def __str__(self):
+        return f'{self.categoryName}'
 
 
 class Post(models.Model):
@@ -51,10 +57,19 @@ class Post(models.Model):
     def preview(self):
         return f'{self.text[:123]} ...'
 
+    def __str__(self):
+        return f'{self.title}, рейт {self.rate}, дата {self.creationDate.strftime("%m/%d/%Y, %H:%M:%S")}'
+
+    def get_absolute_url(self):
+        return f'/news/{self.id}'
+
 
 class PostCategory(models.Model):
     posts = models.ForeignKey(Post, on_delete=models.CASCADE)
     categories = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.posts.title}, категория: {self.categories.categoryName}'
 
 
 class Comment(models.Model):
@@ -72,3 +87,6 @@ class Comment(models.Model):
         self.rate -= 1
         self.save()
 
+    def __str__(self):
+        return f'Пост: {self.commentPost.title}, пользователь: {self.commentUser.username}: {self.text[:20]}, ' \
+               f'рейт: {self.rate}, дата: {self.creationDate.strftime("%m/%d/%Y, %H:%M:%S")}'

@@ -10,5 +10,7 @@ Post
         <h1>{{ post.title|censor }}</h1>
         <h4>Добавлена: {{ post.creationDate|date:'d-M-Y H:i' }}</h4>
         <p><b>Текст статьи:</b></p>
-        <p>{{ post.text|censor }}</p>
+        <p>{{ post.text|censor }}</p><br>
+        <a href="{% url 'edit_post' post.id %}">Редактировать</a>
+        <a href="{% url 'delete_post' post.id %}">Удалить</a>
 {% endblock content %}

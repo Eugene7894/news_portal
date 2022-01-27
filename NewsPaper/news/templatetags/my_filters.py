@@ -13,4 +13,3 @@ def censor(value):
     value = ' '.join(text_list)
     return value
 
-

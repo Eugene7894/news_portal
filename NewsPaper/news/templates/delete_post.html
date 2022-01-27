@@ -1,18 +1,12 @@
 {% extends 'flatpages/default.html' %}
 
 {% load my_filters %}
-
-{% block title %}
-News
-{% endblock title %}
-
-
+ 
+{% block title %} Post delete {% endblock title %}
+ 
 {% block content %}
-    <h1>Все новости</h1>
-    <h5>Всего: {{news|length}}</h5>
-    <hr>
-    {% if news %}
-        <table>
+<h2>Вы действительно хотите удалить пост?</h2>
+    <table>
             <tr>
                 <th>
                     Заголовок
@@ -24,7 +18,6 @@ News
                     Краткое содержание
                 </th>
             </tr>
-        {% for post in news %}
             <tr>
                 <td>
                     {{ post.title|censor }}
@@ -36,9 +29,9 @@ News
                     {{ post.text|truncatechars:50|censor }}
                 </td>
             </tr>
-        {% endfor %}
         </table>
-    {% else %}
-        <h2>Статей нет!</h2>
-    {% endif %}
-{% endblock content %}
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Подтвердить"></form>
+{% endblock content %} 
