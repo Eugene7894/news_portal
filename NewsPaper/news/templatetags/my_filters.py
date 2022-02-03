@@ -1,4 +1,5 @@
 from django import template
+from ..models import Post
 
 register = template.Library()
 
@@ -12,4 +13,10 @@ def censor(value):
             text_list[i] = '****'
     value = ' '.join(text_list)
     return value
+
+
+@register.filter(name='items_counter')
+def items_counter(value):
+    length = len(Post.objects.all())
+    return length
 

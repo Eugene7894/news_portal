@@ -1,0 +1,44 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block content %}
+    <h3>Your Profile</h3>
+    <table>
+            <tr>
+                <th>
+                    Username
+                </th>
+                <td>
+                    {{ user.username }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <td>
+                    {{ user.first_name }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Last Name
+                </th>
+                <td>
+                    {{ user.last_name }}
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <td>
+                    {{ user.email }}
+                </td>
+            </tr>
+    </table>
+<p><a href="{% url 'profile_edit' user.id %}">Edit Profile</a></p>
+{% endblock content %}

@@ -6,7 +6,7 @@
 <h3>Пост</h3>
 <form method="POST">
     {% csrf_token %} 
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" value="Добавить пост">
 </form>
 {% endblock content %}

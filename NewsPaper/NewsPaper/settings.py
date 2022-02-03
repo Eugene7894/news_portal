@@ -26,8 +26,15 @@ SECRET_KEY = 'django-insecure-2q%jv1+0e5@uv+5^9buk36o9q*ktuw9)7ftkcnk!cj1!ib3bht
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Application definition
 
@@ -39,10 +46,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'news',
-    'accounts',
+    'sign',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'django_filters'
+    'django_filters',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1
@@ -63,7 +76,7 @@ ROOT_URLCONF = 'NewsPaper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'news/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,3 +147,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/news/'
+ACCOUNT_LOGOUT_REDIRECT_URL ="/accounts/login"
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_FORMS = {'signup': 'sign.forms.BasicSignupForm'}

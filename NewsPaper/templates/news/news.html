@@ -9,7 +9,10 @@ News
 
 {% block content %}
     <h1>Все новости</h1>
-    <h5>Всего: {{news|length}}</h5>
+    <h5>Всего: {{news|items_counter}}</h5>
+    {% if is_not_author %}
+    <button> <a href="{% url 'upgrade' %}">Стать автором!</a> </button>
+    {% endif %}
     <hr>
     {% if news %}
         <table>
