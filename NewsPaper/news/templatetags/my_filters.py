@@ -15,6 +15,11 @@ def censor(value):
     return value
 
 
+@register.filter(name='get_item')
+def get_item(dictionary, key):
+    return dictionary.get(key)
+
+
 @register.filter(name='items_counter')
 def items_counter(value):
     length = len(Post.objects.all())

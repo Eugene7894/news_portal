@@ -1,7 +1,7 @@
 # from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from .models import Post
+from .models import Post, Category
 from .filters import NewsFilter
 from .forms import PostForm
 
@@ -17,6 +17,29 @@ class PostsList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
+        context['categories'] = Category.objects.all()
+        return context
+
+
+class CatPostsList(ListView):
+    model = Post
+    template_name = 'news/post_category.html'
+    context_object_name = 'cat_news'
+    ordering = ['-creationDate']
+    paginate_by = 10
+
+    def get_queryset(self, **kwargs):
+        id_cat = self.kwargs.get('pk')
+        current_cat = Category.objects.get(pk=id_cat)
+        cust_queryset = current_cat.post_set.all()
+        return cust_queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        id_cat = self.kwargs.get('pk')
+        current_cat = Category.objects.get(pk=id_cat)
+        context['category_obj'] = current_cat
+        context['is_not_subscribe'] = not current_cat.subscribers.filter(username=self.request.user.username).exists()
         return context
 
 
@@ -24,6 +47,16 @@ class PostDetails(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'news/post.html'
     context_object_name = 'post'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        id_post = self.kwargs.get('pk')
+        current_cats = Category.objects.filter(post__pk=id_post)
+        cat_bool_dict = {}
+        for cat in current_cats:
+            cat_bool_dict[cat] = not cat.subscribers.filter(username=self.request.user.username).exists()
+        context['is_not_subscribe'] = cat_bool_dict
+        return context
 
 
 class PostSearch(ListView):
@@ -59,3 +92,5 @@ class PostDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = 'news/delete_post.html'
     queryset = Post.objects.all()
     success_url = '/news/'
+
+

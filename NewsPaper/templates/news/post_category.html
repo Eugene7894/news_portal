@@ -8,18 +8,16 @@ News
 
 
 {% block content %}
-    <h1>Все новости</h1>
-    <h5>Всего: {{news|items_counter}}</h5>
+    <h1>Новости категории: {{ category_obj.categoryName }}</h1>
+    <h6>{% if user.is_authenticated %}
+            {% if is_not_subscribe %}
+                <button> <a href="{% url 'cat_subscription' category_obj.id %}">Подписаться на категорию</a> </button>
+            {% else %}
+                <button> <a href="{% url 'cat_subscription' category_obj.id %}">Отписаться</a> </button>
+            {% endif %}
+        {% endif %}</h6>
     <br>
-    {% if news %}
-        <table>
-                <th>Категории:</th>
-            {% for category in categories %}
-                <td>
-                    <a href="{% url 'cat_news_list' category.id %}">{{ category.categoryName }}&nbsp;</a>
-                </td>
-            {% endfor %}
-        </table>   <br>
+    {% if cat_news %}
         {% if user.is_authenticated %}
             {% if is_not_author %}
                 <button> <a href="{% url 'upgrade' %}">Стать автором!</a> </button>
@@ -38,7 +36,7 @@ News
                     Краткое содержание
                 </th>
             </tr>
-        {% for post in news %}
+        {% for post in cat_news %}
             <tr>
                 <td>
                     <a href="{% url 'post' post.id %}">{{ post.title|censor }}</a>

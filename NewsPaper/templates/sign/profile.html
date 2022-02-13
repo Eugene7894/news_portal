@@ -40,5 +40,11 @@ Profile
                 </td>
             </tr>
     </table>
+<!--{% if is_not_author %}
+    <button> <a href="http://127.0.0.1:8000/sign/upgrade/">Стать автором!</a> </button>
+    {% endif %}-->
+{% if is_not_author %}
+    <button> <a href="{% url 'upgrade' %}">Стать автором!</a> </button>
+    {% endif %}
 <p><a href="{% url 'profile_edit' user.id %}">Edit Profile</a></p>
 {% endblock content %}

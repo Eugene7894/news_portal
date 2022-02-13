@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News update mail</title>
+</head>
+<body>
+    <h2>Здравствуйте, {{ user.username }}!</h2>
+    <h5> Новая статья от автора {{ post.author }} из категории(-ий) {{ cat_mess }}</h5>
+    <p> Название: {{ post.title }} </p>
+    <p> Краткое содержание: {{ post.text|truncatechars:50 }} </p>
+
+    <p><a href="http://127.0.0.1:8000{{post.get_absolute_url }}">Перейти на статью</a></p>
+
+</body>
+</html>

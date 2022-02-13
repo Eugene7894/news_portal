@@ -9,6 +9,25 @@ Post
 {% block content %}
         <h1>{{ post.title|censor }}</h1>
         <h4>Добавлена: {{ post.creationDate|date:'d-M-Y H:i' }}</h4>
+        <table>
+                <tr>
+                    <th>
+                        Категории:
+                    </th>
+                </tr>
+            {% for category in post.postCategory.all %}
+                <tr>
+                    <td>{{ category.categoryName }}</td>
+                    <td>
+                        {% if is_not_subscribe|get_item:category %}
+                            <button> <a href="{% url 'cat_subscription' category.id %}">Подписаться на категорию</a> </button>
+                        {% else %}
+                            <button> <a href="{% url 'cat_subscription' category.id %}">Отписаться</a> </button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
         <p><b>Текст статьи:</b></p>
         <p>{{ post.text|censor }}</p><br>
         <a href="{% url 'edit_post' post.id %}">Редактировать</a>
