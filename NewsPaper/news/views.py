@@ -1,6 +1,7 @@
 # from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.cache import cache
 from .models import Post, Category
 from .filters import NewsFilter
 from .forms import PostForm
@@ -57,6 +58,16 @@ class PostDetails(LoginRequiredMixin, DetailView):
             cat_bool_dict[cat] = not cat.subscribers.filter(username=self.request.user.username).exists()
         context['is_not_subscribe'] = cat_bool_dict
         return context
+
+    def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
+        obj = cache.get(f'post-{self.kwargs["pk"]}', None)  # кэш очень похож на словарь, и метод get действует также.
+        # Он забирает значение по ключу, если его нет, то забирает None.
+        # если объекта нет в кэше, то получаем его и записываем в кэш
+        if not obj:
+            obj = super().get_object(*args, **kwargs)
+            cache.set(f'post-{self.kwargs["pk"]}', obj)
+
+        return obj
 
 
 class PostSearch(ListView):
