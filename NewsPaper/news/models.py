@@ -28,6 +28,10 @@ class Category(models.Model):
     categoryName = models.CharField(max_length=64, unique=True)
     subscribers = models.ManyToManyField(User)
 
+    # Функция, для admin.py для корректного отображения поля с m2m subscribers в list_display
+    def get_subscribers(self):
+        return "; ".join([_.username for _ in self.subscribers.all()])
+
     def __str__(self):
         return f'{self.categoryName}'
 
@@ -47,6 +51,10 @@ class Post(models.Model):
     title = models.CharField(max_length=128)
     text = models.TextField()
     rate = models.SmallIntegerField(default=0)
+
+    # Функция, для admin.py для корректного отображения поля с m2m postCategory в list_display
+    def get_categories(self):
+        return "; ".join([_.categoryName for _ in self.postCategory.all()])
 
     def like(self):
         self.rate += 1

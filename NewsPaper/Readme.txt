@@ -22,4 +22,13 @@ https://www.distributedpython.com/2018/10/26/celery-execution-pool/ .
 Можно было использовать gevent https://stackoverflow.com/questions/62524908/task-receive-but-doesnt-excute .
 
 
-
+D11
+# Добвалены дампы бд:
+py manage.py dumpdata --format=json > dump_db.json и
+py manage.py dumpdata --format=xml > dump_db.xml
+# Добавлена управляющая команда(для manage.py), которая принимает в качестве аругмента название категории и удаляет
+связанные с ней новости.
+# В news/admin добавлены классы для кастомизированного отображения моделей в админ-панели, а также добавлены два
+варианта фильтрации объектов сущностей; в news/models добавлены методы в классы моделей, которые позволяют отображать
+поля со связью м2м в админ-панели в таблице сущности(эти методы добавлены в news/admin в кортежи list_display
+вместо полей с м2м). 
