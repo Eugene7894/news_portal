@@ -73,6 +73,107 @@ MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+            'debug_info_format': {
+                'format': '%(asctime)s %(levelname)s %(message)s'
+            },
+            'warning_mail_error_format': {
+                'format': '{asctime} {levelname} {message} {pathname}',
+                'style': '{',  # задает форматир. для атрибута LogRecord {attrname} вместо %(attrname)s в строке формата
+            },
+            'error_crit_format': {
+                'format': '{asctime} {levelname} {message} {pathname} {exc_info}',
+                'style': '{',
+            },
+            'general_security_format': {
+                'format': '{asctime} {levelname} {module} {message}',
+                'style': '{',
+            },
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        'console_debug': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'debug_info_format',
+            'filters': ['require_debug_true'],
+        },
+        'console_warning': {
+            'level': 'WARNING',
+            'class': 'logging.StreamHandler',
+            'formatter': 'warning_mail_error_format',
+            'filters': ['require_debug_true'],
+        },
+        'console_errors': {
+            'level': 'ERROR',
+            'class': 'logging.StreamHandler',
+            'formatter': 'error_crit_format',
+            'filters': ['require_debug_true'],
+        },
+        'mail_admins_handler': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'warning_mail_error_format',
+            'filters': ['require_debug_false'],
+        },
+        'file_general_handler': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'general_security_format',
+            'filters': ['require_debug_false'],
+            'filename': BASE_DIR / 'logs_dir' / 'general.log',
+        },
+        'file_errors_handler': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'error_crit_format',
+            'filename': BASE_DIR / 'logs_dir' / 'errors.log',
+        },
+        'file_security_handler': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'general_security_format',
+            'filename': BASE_DIR / 'logs_dir' / 'security.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console_debug', 'console_warning', 'console_errors', 'file_general_handler'],
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file_errors_handler', 'mail_admins_handler'],
+            'propagate': True,
+        },
+        'django.server': {
+            'handlers': ['file_errors_handler', 'mail_admins_handler'],
+            'propagate': True,
+        },
+        'django.template': {
+            'handlers': ['file_errors_handler'],
+            'propagate': True,
+        },
+        'django.db_backends': {
+            'handlers': ['file_errors_handler'],
+            'propagate': True,
+        },
+        'django.security': {
+            'handlers': ['file_security_handler'],
+            'propagate': True,
+        },
+    }
+}
+
 ROOT_URLCONF = 'NewsPaper.urls'
 
 TEMPLATES = [
@@ -147,6 +248,13 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DEFAULT_FROM_EMAIL = 'projects-mail-sf@yandex.ru'  # здесь указываем свою почту, с которой будут отправляться письма
+
+ADMINS = [
+    ('Eugene', 'phantom-post@yandex.ru'),
+    # список всех админов в формате ('имя', 'их почта')
+]
+
+SERVER_EMAIL = 'projects-mail-sf@yandex.ru'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static"

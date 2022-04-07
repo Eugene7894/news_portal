@@ -19,4 +19,5 @@ class Command(BaseCommand):
             Post.objects.filter(postCategory=category)
             self.stdout.write(self.style.SUCCESS(f"Все новости категории {category.categoryName} успешно удалены!"))
         except Post.DoesNotExist:
-            self.stdout.write(self.style.ERROR(f'Категории {options["category"]} не существует!'))
+            raise CommandError(f'Категории {options["category"]} не существует!')
+            # self.stdout.write(self.style.ERROR(f'Категории {options["category"]} не существует!'))

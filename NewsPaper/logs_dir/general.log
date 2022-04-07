@@ -1,0 +1,38 @@
+%(asctime)s %(levelname)s %(module)s %Watching for file changes with StatReloaders
+%(asctime)s %(levelname)s %(module)s %"GET /news/ HTTP/1.1" 200 10536s
+%(asctime)s %(levelname)s %(module)s %"GET /news/37 HTTP/1.1" 200 3412s
+%(asctime)s %(levelname)s %(module)s %Not Found: /news/100s
+%(asctime)s %(levelname)s %(module)s %"GET /news/100 HTTP/1.1" 404 2754s
+%(asctime)s %(levelname)s %(module)s %C:\Python_projects\news_portal\NewsPaper\news\views.py changed, reloading.s
+%(asctime)s %(levelname)s %(module)s %Watching for file changes with StatReloaders
+%(asctime)s %(levelname)s %(module)s %Internal Server Error: /news/37s
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader.py", line 47, in select_template
+    raise TemplateDoesNotExist(', '.join(template_name_list), chain=chain)
+django.template.exceptions.TemplateDoesNotExist: news/posts.html
+%(asctime)s %(levelname)s %(module)s %"GET /news/37 HTTP/1.1" 500 87126s
+%(asctime)s %(levelname)s %(module)s %C:\Python_projects\news_portal\NewsPaper\news\views.py changed, reloading.s
+%(asctime)s %(levelname)s %(module)s %Watching for file changes with StatReloaders
+%(asctime)s %(levelname)s %(module)s %"GET /news/37 HTTP/1.1" 200 3412s
+%(asctime)s %(levelname)s %(module)s %C:\Python_projects\news_portal\NewsPaper\NewsPaper\settings.py changed, reloading.s
+%(asctime)s %(levelname)s %(module)s %Watching for file changes with StatReloaders
+%(asctime)s %(levelname)s %(module)s %Not Found: /s
+%(asctime)s %(levelname)s %(module)s %"GET / HTTP/1.1" 404 2487s
+%(asctime)s %(levelname)s %(module)s %"GET /news/ HTTP/1.1" 200 10536s
+%(asctime)s %(levelname)s %(module)s %C:\Python_projects\news_portal\NewsPaper\NewsPaper\settings.py changed, reloading.s
+%(asctime)s %(levelname)s %(module)s %Watching for file changes with StatReloaders
+%(asctime)s %(levelname)s %(module)s %"GET /news/category/1 HTTP/1.1" 200 4355s
+%(asctime)s %(levelname)s %(module)s %C:\Python_projects\news_portal\NewsPaper\NewsPaper\settings.py changed, reloading.s
+2022-04-07 23:09:31,943 INFO autoreload Watching for file changes with StatReloader
+2022-04-07 23:09:34,822 INFO basehttp "GET /news/2 HTTP/1.1" 200 4118
+2022-04-07 23:09:58,374 INFO basehttp "GET /sign/3/profile/ HTTP/1.1" 200 3759
