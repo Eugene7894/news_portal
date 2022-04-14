@@ -1,0 +1,560 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-14 23:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\news\tasks.py:29
+msgid "Hi, New post category(-es){}"
+msgstr "Hi, New post category(-es){}"
+
+#: .\news\tasks.py:54
+msgid "Weekly news digest by category {}!"
+msgstr "Еженедельный дайджест новостей по категориям {}!"
+
+#: .\news\tasks.py:55
+msgid "Hi {}, weekly news digest {}"
+msgstr "Привет {}, еженедельный дайджест новостей {}"
+
+#: .\sign\forms.py:10 .\templates\sign\profile.html:38
+msgid "Email"
+msgstr "Эл. почта"
+
+#: .\sign\forms.py:11 .\sign\forms.py:27
+msgid "First name"
+msgstr "Имя"
+
+#: .\sign\forms.py:12 .\sign\forms.py:36
+msgid "Last name"
+msgstr "Фамилия"
+
+#: .\templates\allauth\account\account_inactive.html:5
+#: .\templates\allauth\account\account_inactive.html:8
+msgid "Account Inactive"
+msgstr "Аккаунт не активен"
+
+#: .\templates\allauth\account\account_inactive.html:10
+msgid "This account is inactive."
+msgstr "Этот аккаунт не активен."
+
+#: .\templates\allauth\account\email.html:5
+#: .\templates\allauth\account\email.html:8
+msgid "E-mail Addresses"
+msgstr "Адреса электронной почты"
+
+#: .\templates\allauth\account\email.html:10
+msgid "The following e-mail addresses are associated with your account:"
+msgstr "Следующие адреса электронной почты связаны с вашей учетной записью:"
+
+#: .\templates\allauth\account\email.html:24
+msgid "Verified"
+msgstr "Верифицирован"
+
+#: .\templates\allauth\account\email.html:26
+msgid "Unverified"
+msgstr "Неверифицирован"
+
+#: .\templates\allauth\account\email.html:28
+msgid "Primary"
+msgstr "Первичный"
+
+#: .\templates\allauth\account\email.html:34
+msgid "Make Primary"
+msgstr "Сделать первичным"
+
+#: .\templates\allauth\account\email.html:35
+msgid "Re-send Verification"
+msgstr "Отправить подтверждение"
+
+#: .\templates\allauth\account\email.html:36 .\templates\news\news.html:49
+#: .\templates\news\post.html:36 .\templates\news\post_category.html:47
+msgid "Remove"
+msgstr "Удалить"
+
+#: .\templates\allauth\account\email.html:43
+msgid "Warning:"
+msgstr "Предупреждение:"
+
+#: .\templates\allauth\account\email.html:43
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"В настоящее время у вас нет настроенного адреса электронной почты. Вам "
+"следует добавить адрес электронной почты, чтобы вы могли получать "
+"уведомления, сбрасывать пароль и т. д."
+
+#: .\templates\allauth\account\email.html:48
+msgid "Add E-mail Address"
+msgstr "Добавить адрес электронной почты"
+
+#: .\templates\allauth\account\email.html:53
+msgid "Add E-mail"
+msgstr "Добавить E-mail"
+
+#: .\templates\allauth\account\email.html:63
+msgid "Do you really want to remove the selected e-mail address?"
+msgstr "Вы действительно хотите удалить выбранный адрес электронной почты?"
+
+#: .\templates\allauth\account\email\email_confirmation_signup_message.html:9
+msgid "Greeting letter"
+msgstr "Приветственное письмо"
+
+#: .\templates\allauth\account\email\email_confirmation_signup_message.html:13
+#, python-format
+msgid "Thank you for registering, %(user.username)s!"
+msgstr "Спасибо за регистрацию, %(user.username)s!"
+
+#: .\templates\allauth\account\email\email_confirmation_signup_message.html:14
+#, python-format
+msgid ""
+"Please go to <b><a href=\"%(activate_url)s\">link</a></b>,\n"
+"        to activate your account!"
+msgstr ""
+"Перейдите по <b><a href=\"%(activate_url)s\">ссылке</a></b>,\n"
+" для активации вашей учетной записи!"
+
+#: .\templates\allauth\account\email\email_confirmation_subject.txt:3
+msgid "Email confirmation and account activation"
+msgstr "Подтверждение электронной почты и активация учетной записи"
+
+#: .\templates\allauth\account\email_confirm.html:6
+#: .\templates\allauth\account\email_confirm.html:10
+msgid "Confirm E-mail Address"
+msgstr "Подтвердите адрес электронной почты"
+
+#: .\templates\allauth\account\email_confirm.html:16
+#, python-format
+msgid ""
+"Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
+"address for user %(user_display)s."
+msgstr ""
+"Подтвердите, что <a href=\"mailto:%(email)s\">%(email)s</a> является адресом "
+"электронной почты адрес пользователя %(user_display)s."
+
+#: .\templates\allauth\account\email_confirm.html:20
+#: .\templates\news\delete_post.html:38
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: .\templates\allauth\account\email_confirm.html:27
+#, python-format
+msgid ""
+"This e-mail confirmation link expired or is invalid. Please <a href=\"%"
+"(email_url)s\">issue a new e-mail confirmation request</a>."
+msgstr ""
+"Срок действия этой ссылки для подтверждения по электронной почте истек или "
+"недействителен. Пожалуйста, <a href=\"%(email_url)s\">отправить новый запрос "
+"подтверждения по электронной почте</a>."
+
+#: .\templates\allauth\account\login.html:6
+#: .\templates\allauth\account\login.html:10
+#: .\templates\allauth\account\login.html:43
+#: .\templates\flatpages\default.html:58
+msgid "Sign In"
+msgstr "Войти"
+
+#: .\templates\allauth\account\login.html:15
+#, python-format
+msgid ""
+"Please sign in with one\n"
+"of your existing third party accounts. Or, <a href=\"%(signup_url)s\">sign "
+"up</a>\n"
+"for a %(site_name)s account and sign in below:"
+msgstr ""
+"Пожалуйста, войдите с одним\n"
+"вашей сторонней учетной записи. Или <a href=\"%(signup_url)s\">подписать "
+"вверх</a>\n"
+"для учетной записи %(site_name)s и войдите ниже:"
+
+#: .\templates\allauth\account\login.html:25
+msgid "or"
+msgstr "или"
+
+#: .\templates\allauth\account\login.html:32
+#, python-format
+msgid ""
+"If you have not created an account yet, then please\n"
+"<a href=\"%(signup_url)s\">sign up</a> first."
+msgstr ""
+"Если вы еще не создали учетную запись, тогда, пожалуйста\n"
+"<a href=\"%(signup_url)s\">зарегистрируйтесь</a>."
+
+#: .\templates\allauth\account\login.html:42
+#: .\templates\allauth\account\password_change.html:14
+msgid "Forgot Password?"
+msgstr "Забыли пароль?"
+
+#: .\templates\allauth\account\logout.html:5
+#: .\templates\allauth\account\logout.html:8
+#: .\templates\allauth\account\logout.html:17
+#: .\templates\flatpages\default.html:55
+msgid "Sign Out"
+msgstr "Выйти"
+
+#: .\templates\allauth\account\logout.html:10
+msgid "Are you sure you want to sign out?"
+msgstr "Вы уверены, что хотите выйти?"
+
+#: .\templates\allauth\account\password_change.html:5
+#: .\templates\allauth\account\password_change.html:8
+#: .\templates\allauth\account\password_change.html:13
+#: .\templates\allauth\account\password_reset_from_key.html:4
+#: .\templates\allauth\account\password_reset_from_key.html:7
+#: .\templates\allauth\account\password_reset_from_key_done.html:4
+#: .\templates\allauth\account\password_reset_from_key_done.html:7
+msgid "Change Password"
+msgstr "Сменить пароль"
+
+#: .\templates\allauth\account\password_reset.html:6
+#: .\templates\allauth\account\password_reset.html:10
+#: .\templates\allauth\account\password_reset_done.html:6
+#: .\templates\allauth\account\password_reset_done.html:9
+msgid "Password Reset"
+msgstr "Пароль сброшен"
+
+#: .\templates\allauth\account\password_reset.html:15
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+"Забыли пароль? Введите свой адрес электронной почты ниже, и мы вышлем вам "
+"электронное письмо, позволяющее сбросить его."
+
+#: .\templates\allauth\account\password_reset.html:20
+msgid "Reset My Password"
+msgstr "Сбросить мой пароль"
+
+#: .\templates\allauth\account\password_reset.html:23
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+"Пожалуйста, свяжитесь с нами, если у вас возникнут проблемы со сбросом "
+"пароля."
+
+#: .\templates\allauth\account\password_reset_done.html:15
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"Мы отправили вам электронное письмо. Пожалуйста, свяжитесь с нами, если вы "
+"его не получилив течение нескольких минут."
+
+#: .\templates\allauth\account\password_reset_from_key.html:7
+msgid "Bad Token"
+msgstr "Плохой токен"
+
+#: .\templates\allauth\account\password_reset_from_key.html:11
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+"Ссылка для сброса пароля недействительна, возможно, из-за того, "
+"чтоиспользуется. Пожалуйста, запросите <a href=\"%(passwd_reset_url)s"
+"\">сброс нового пароля</а>."
+
+#: .\templates\allauth\account\password_reset_from_key.html:17
+msgid "change password"
+msgstr "сменить пароль"
+
+#: .\templates\allauth\account\password_reset_from_key.html:20
+#: .\templates\allauth\account\password_reset_from_key_done.html:8
+msgid "Your password is now changed."
+msgstr "Ваш пароль теперь изменен."
+
+#: .\templates\allauth\account\password_set.html:5
+#: .\templates\allauth\account\password_set.html:8
+#: .\templates\allauth\account\password_set.html:13
+msgid "Set Password"
+msgstr "Установить пароль"
+
+#: .\templates\allauth\account\signup.html:5
+msgid "Signup"
+msgstr "Зарегистрироваться"
+
+#: .\templates\allauth\account\signup.html:8
+#: .\templates\allauth\account\signup.html:18
+#: .\templates\flatpages\default.html:59
+msgid "Sign Up"
+msgstr "Зарегистрироваться"
+
+#: .\templates\allauth\account\signup.html:10
+#, python-format
+msgid ""
+"Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
+msgstr ""
+"У вас уже есть учетная запись? Тогда, пожалуйста, <a href=\"%(login_url)s"
+"\">войдите</a>."
+
+#: .\templates\allauth\account\signup_closed.html:5
+#: .\templates\allauth\account\signup_closed.html:8
+msgid "Sign Up Closed"
+msgstr "Регистрация закрыта"
+
+#: .\templates\allauth\account\signup_closed.html:10
+msgid "We are sorry, but the sign up is currently closed."
+msgstr "Приносим свои извинения, но регистрация в настоящее время закрыта."
+
+#: .\templates\allauth\account\verification_sent.html:5
+#: .\templates\allauth\account\verification_sent.html:8
+#: .\templates\allauth\account\verified_email_required.html:5
+#: .\templates\allauth\account\verified_email_required.html:8
+msgid "Verify Your E-mail Address"
+msgstr "Проверьте свой адрес электронной почты"
+
+#: .\templates\allauth\account\verification_sent.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+"Мы отправили вам электронное письмо для проверки. Перейдите по ссылке, "
+"указанной на завершить процесс регистрации. Пожалуйста, свяжитесь с нами, "
+"если вы не получили егов течение нескольких минут."
+
+#: .\templates\allauth\account\verified_email_required.html:12
+msgid ""
+"This part of the site requires us to verify that\n"
+"you are who you claim to be. For this purpose, we require that you\n"
+"verify ownership of your e-mail address. "
+msgstr ""
+"Эта часть сайта требует от нас проверки\n"
+"вы тот, за кого себя выдаете. Для этого мы требуем, чтобы вы\n"
+"подтвердите право собственности на свой адрес электронной почты."
+
+#: .\templates\allauth\account\verified_email_required.html:16
+msgid ""
+"We have sent an e-mail to you for\n"
+"verification. Please click on the link inside this e-mail. Please\n"
+"contact us if you do not receive it within a few minutes."
+msgstr ""
+"Мы отправили вам письмо по электронной почте\n"
+"подтверждение. Пожалуйста, нажмите на ссылку внутри этого электронного "
+"письма. Пожалуйста\n"
+"свяжитесь с нами, если вы не получите его в течение нескольких минут."
+
+#: .\templates\allauth\account\verified_email_required.html:20
+#, python-format
+msgid ""
+"<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
+"mail address</a>."
+msgstr ""
+"<strong>Примечание.</strong> вы по-прежнему можете <a href=\"%(email_url)s"
+"\">изменить свой электронный адрес эл. почты</a>."
+
+#: .\templates\flatpages\default.html:32
+msgid "Home"
+msgstr "Главная"
+
+#: .\templates\flatpages\default.html:37
+msgid "News and posts"
+msgstr "Новости и посты"
+
+#: .\templates\flatpages\default.html:40 .\templates\news\search.html:19
+msgid "Search"
+msgstr "Поиск"
+
+#: .\templates\flatpages\default.html:45
+msgid "Add"
+msgstr "Добавить"
+
+#: .\templates\flatpages\default.html:49 .\templates\sign\profile.html:6
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\templates\flatpages\default.html:52
+msgid "Change E-mail"
+msgstr "Изменить E-mail"
+
+#: .\templates\flatpages\default.html:75
+msgid "set"
+msgstr "Выбрать"
+
+#: .\templates\news\add_post.html:5
+msgid "Post add"
+msgstr "Добавить пост"
+
+#: .\templates\news\add_post.html:8 .\templates\news\post.html:8
+msgid "Post"
+msgstr "Пост"
+
+#: .\templates\news\add_post.html:12
+msgid "Add post"
+msgstr "Добавить пост"
+
+#: .\templates\news\delete_post.html:7
+msgid "Post delete"
+msgstr "Удалить пост"
+
+#: .\templates\news\delete_post.html:10
+msgid "Are you sure you want to delete the post?"
+msgstr "Вы уверены, что хотите удалить пост?"
+
+#: .\templates\news\delete_post.html:14 .\templates\news\news.html:34
+#: .\templates\news\post_category.html:32 .\templates\news\search.html:26
+msgid "Title"
+msgstr "Заголовок"
+
+#: .\templates\news\delete_post.html:17 .\templates\news\news.html:37
+#: .\templates\news\post_category.html:35 .\templates\news\search.html:29
+msgid "Publish date"
+msgstr "Дата публикации"
+
+#: .\templates\news\delete_post.html:20 .\templates\news\news.html:40
+#: .\templates\news\post_category.html:38 .\templates\news\search.html:32
+msgid "Summary"
+msgstr "Краткое содержание"
+
+#: .\templates\news\news.html:8 .\templates\news\post_category.html:8
+msgid "News"
+msgstr "Новости"
+
+#: .\templates\news\news.html:13
+msgid "All posts"
+msgstr "Все посты"
+
+#: .\templates\news\news.html:14
+#, python-format
+msgid " Total: %(news|items_counter)s "
+msgstr " Всего: %(news|items_counter)s "
+
+#: .\templates\news\news.html:18
+msgid "Categories:"
+msgstr "Категории:"
+
+#: .\templates\news\news.html:27 .\templates\news\post_category.html:25
+#: .\templates\sign\profile.html:47
+msgid "Become author!"
+msgstr "Стать автором!"
+
+#: .\templates\news\news.html:48 .\templates\news\post.html:35
+#: .\templates\news\post_category.html:46
+msgid "Edit"
+msgstr "Редактировать"
+
+#: .\templates\news\news.html:62 .\templates\news\post_category.html:60
+msgid "Add new post"
+msgstr "Добавить новый пост"
+
+#: .\templates\news\news.html:65 .\templates\news\post_category.html:63
+#: .\templates\news\search.html:50
+msgid "Nothing here"
+msgstr "Нет статей"
+
+#: .\templates\news\news.html:72 .\templates\news\post_category.html:70
+msgid "First"
+msgstr "Первая"
+
+#: .\templates\news\news.html:88 .\templates\news\post_category.html:86
+msgid "Last"
+msgstr "Последняя"
+
+#: .\templates\news\news_update_mail.html:9
+msgid "News update mail"
+msgstr "Письмо о новых постах"
+
+#: .\templates\news\news_update_mail.html:12
+#, python-format
+msgid " Hi, %(user.username)s! "
+msgstr " Привет, %(user.username)s! "
+
+#: .\templates\news\news_update_mail.html:13
+#, python-format
+msgid " New post from author %(post.author)s category(-es) %(cat_mess)s "
+msgstr " Новый пост от автора %(post.author)s категории(-ий) %(cat_mess)s "
+
+#: .\templates\news\news_update_mail.html:14
+#, python-format
+msgid " Title: %(post.title)s "
+msgstr " Заголовок: %(post.title)s "
+
+#: .\templates\news\news_update_mail.html:15
+#, python-format
+msgid " Summary: %(post.text|truncatechars:50)s "
+msgstr " Краткое содержание: %(post.text|truncatechars:50)s "
+
+#: .\templates\news\news_update_mail.html:17
+msgid "Go to post"
+msgstr "К посту"
+
+#: .\templates\news\post.html:13
+msgid "Added:"
+msgstr "Добавлено"
+
+#: .\templates\news\post.html:17
+msgid "Category:"
+msgstr "Категория"
+
+#: .\templates\news\post.html:25 .\templates\news\post_category.html:16
+msgid "Subscribe to category"
+msgstr "Подписаться на категорию"
+
+#: .\templates\news\post.html:27 .\templates\news\post_category.html:18
+msgid "Unsubscribe"
+msgstr "Отписаться"
+
+#: .\templates\news\post.html:33
+msgid "Text:"
+msgstr "Текст"
+
+#: .\templates\news\post_category.html:13
+#, python-format
+msgid " Posts of the category: %(category_obj.categoryName)s "
+msgstr " Посты категории: %(category_obj.categoryName)s "
+
+#: .\templates\news\search.html:8
+msgid "Search news"
+msgstr "Поиск постов"
+
+#: .\templates\news\search.html:13
+msgid "Search posts"
+msgstr "Искать посты"
+
+#: .\templates\news\search.html:14
+#, python-format
+msgid " Total: %(news_search|length)s "
+msgstr " Всего: %(news_search|length)s "
+
+#: .\templates\sign\profile.html:10
+msgid "Your Profile"
+msgstr "Ваш профиль"
+
+#: .\templates\sign\profile.html:14
+msgid "Username"
+msgstr "Логин"
+
+#: .\templates\sign\profile.html:22
+msgid "First Name"
+msgstr "Имя"
+
+#: .\templates\sign\profile.html:30
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: .\templates\sign\profile.html:49
+msgid "Edit Profile"
+msgstr "Редактировать профиль"
+
+#: .\templates\sign\profile_edit.html:5 .\templates\sign\profile_edit.html:8
+msgid "Profile Edit"
+msgstr "Редактировать профиль"
+
+#: .\templates\sign\profile_edit.html:12
+msgid "Change"
+msgstr "Изменить"

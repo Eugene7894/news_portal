@@ -1,1 +1,3 @@
-Подтверждение почты и активация аккаунта
+{% load i18n %}
+
+{% trans "Email confirmation and account activation" %}

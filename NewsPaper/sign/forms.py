@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 from django import forms
+from django.utils.translation import gettext as _
 
 
 class ProfileForm(ModelForm):
-    email = forms.EmailField(label="Email")
-    first_name = forms.CharField(label="First name")
-    last_name = forms.CharField(label="Last name")
+    email = forms.EmailField(label=_("Email"))
+    first_name = forms.CharField(label=_("First name"))
+    last_name = forms.CharField(label=_("Last name"))
 
     class Meta:
         model = User
@@ -23,7 +24,7 @@ class BasicSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "first_name",
-                "placeholder": ("First name"),
+                "placeholder": _("First name"),
                 "autocomplete": "first_name",
                 }
         )
@@ -32,7 +33,7 @@ class BasicSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "last_name",
-                "placeholder": ("Last name"),
+                "placeholder": _("Last name"),
                 "autocomplete": "last_name",
                 }
         )

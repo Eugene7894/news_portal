@@ -2,38 +2,40 @@
 
 {% load my_filters %}
 
+{% load i18n %}
+
 {% block title %}
-News
+{% trans "News" %}
 {% endblock title %}
 
 
 {% block content %}
-    <h1>Новости категории: {{ category_obj.categoryName }}</h1>
+    <h1>{% blocktranslate with category_name=category_obj.categoryName %} Posts of the category: {{ category_name }} {% endblocktranslate %}</h1>
     <h6>{% if user.is_authenticated %}
             {% if is_not_subscribe %}
-                <button> <a href="{% url 'cat_subscription' category_obj.id %}">Подписаться на категорию</a> </button>
+                <button> <a href="{% url 'cat_subscription' category_obj.id %}">{% trans "Subscribe to category" %}</a> </button>
             {% else %}
-                <button> <a href="{% url 'cat_subscription' category_obj.id %}">Отписаться</a> </button>
+                <button> <a href="{% url 'cat_subscription' category_obj.id %}">{% trans "Unsubscribe" %}</a> </button>
             {% endif %}
         {% endif %}</h6>
     <br>
     {% if cat_news %}
         {% if user.is_authenticated %}
             {% if is_not_author %}
-                <button> <a href="{% url 'upgrade' %}">Стать автором!</a> </button>
+                <button> <a href="{% url 'upgrade' %}">{% trans "Become author!" %}</a> </button>
             {% endif %}
         {% endif %}
             <hr>
         <table>
             <tr>
                 <th>
-                    Заголовок
+                    {% trans "Title" %}
                 </th>
                 <th>
-                    Дата публикации
+                    {% trans "Publish date" %}
                 </th>
                 <th>
-                    Краткое содержание
+                    {% trans "Summary" %}
                 </th>
             </tr>
         {% for post in cat_news %}
@@ -41,8 +43,8 @@ News
                 <td>
                     <a href="{% url 'post' post.id %}">{{ post.title|censor }}</a>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'edit_post' post.id %}">Редактировать</a>
-                        <a href="{% url 'delete_post' post.id %}">Удалить</a>
+                        <a href="{% url 'edit_post' post.id %}">{% trans "Edit" %}</a>
+                        <a href="{% url 'delete_post' post.id %}">{% trans "Remove" %}</a>
                     {% endif %}
                 </td>
                 <td>
@@ -55,17 +57,17 @@ News
         {% endfor %}
         </table>
         {% if user.is_authenticated %}
-            <a href="{% url 'post_add' %}">Добавить новый пост</a>
+            <a href="{% url 'post_add' %}">{% trans "Add new post" %}</a>
         {% endif %}<br>
     {% else %}
-        <h2>Статей нет!</h2>
+        <h2>{% trans "Nothing here" %}</h2>
     {% endif %}
     <!-- Проверяем что поддерживается постраничный вывод -->
     {% if is_paginated %}
 
         <!-- Если доступна предыдущая страница, то даём ссылку на неё и самую первую страницу -->
         {% if page_obj.has_previous %}
-            <a href="?page=1">First</a>
+            <a href="?page=1">{% trans "First" %}</a>
             <a href="?page={{ page_obj.previous_page_number }}"><<<</a>
         {% endif %}
 
@@ -81,7 +83,7 @@ News
         <!-- Если есть следующая страница, то даём ссылку на неё и на самую последнюю страницу -->
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">>>></a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">{% trans "Last" %}</a>
         {% endif %}
 
     {% endif %}

@@ -1,21 +1,23 @@
 {% extends 'flatpages/default.html' %}
 
 {% load my_filters %}
- 
-{% block title %} Post delete {% endblock title %}
+
+{% load i18n %}
+
+{% block title %} {% trans "Post delete" %} {% endblock title %}
  
 {% block content %}
-<h2>Вы действительно хотите удалить пост?</h2>
+<h2>{% trans "Are you sure you want to delete the post?" %}</h2>
     <table>
             <tr>
                 <th>
-                    Заголовок
+                    {% trans "Title" %}
                 </th>
                 <th>
-                    Дата публикации
+                    {% trans "Publish date" %}
                 </th>
                 <th>
-                    Краткое содержание
+                    {% trans "Summary" %}
                 </th>
             </tr>
             <tr>
@@ -33,5 +35,5 @@
 
 <form method="POST">
     {% csrf_token %}
-    <input type="submit" value="Подтвердить"></form>
+    <input type="submit" value="{% trans 'Confirm' %}"></form>
 {% endblock content %} 

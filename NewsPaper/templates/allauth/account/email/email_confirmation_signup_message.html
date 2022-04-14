@@ -1,14 +1,18 @@
 <!DOCTYPE html>
+
+{% load i18n %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приветственное письмо</title>
+    <title>{% trans "Greeting letter" %}</title>
 </head>
 <body>
     {% load account %} <!-- Загружаем тег который позволит получить нам ссылку на подтверждение -->
-    <h2>Спасибо за регистрацию, {{ user.username }}!</h2>
-    <h4>Пожалуйста, перейдите по <b><a href="{{ activate_url }}">ссылке</a></b>, чтобы активировать свой аккаунт!</h4>
+    <h2>{% blocktranslate %}Thank you for registering, {{ user.username }}!{% endblocktranslate %}</h2>
+    <h4>{% blocktranslate %}Please go to <b><a href="{{ activate_url }}">link</a></b>,
+        to activate your account!{% endblocktranslate %}</h4>
      <!-- Вставляем ссылку на активацию -->
 </body>
 </html>

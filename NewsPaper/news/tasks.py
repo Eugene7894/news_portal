@@ -3,6 +3,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from datetime import datetime, timedelta
+from django.utils.translation import gettext as _
 
 from .models import Post, Category
 
@@ -25,7 +26,7 @@ def send_sub_mail_after_post(instance_id):
             'news/news_update_mail.html', {'user': sub_user, 'cat_mess': cat_mess, 'post': instance})
         # instance - только созданный экземпляр класса post
         msg = EmailMultiAlternatives(
-            subject=f'Здравствуй, Новая статья из категории(-ий){cat_mess}',
+            subject=_('Hi, New post category(-es){}').format(cat_mess),
             from_email='projects-mail-sf@yandex.ru',
             to=[sub_user.email]
         )
@@ -50,8 +51,8 @@ def send_mail_every_monday():
 
             for subscriber in cat_subscribers:
                 send_mail(
-                    subject=f'Дайджест новостей за неделю по категории {category.categoryName}!',
-                    message=f'Привет {subscriber.username}, дайджест новостей за неделю: {url}',
+                    subject=_('Weekly news digest by category {}!').format(category.categoryName),
+                    message=_('Hi {}, weekly news digest {}').format(subscriber.username, url),
                     from_email='projects-mail-sf@yandex.ru',
                     recipient_list=[subscriber.email]
                 )

@@ -2,32 +2,34 @@
 
 {% load my_filters %}
 
+{% load i18n %}
+
 {% block title %}
-Search news
+{% trans "Search news" %}
 {% endblock title %}
 
 
 {% block content %}
-    <h1>Поиск новостей</h1>
-    <h5>Всего: {{news_search|length}}</h5>
+    <h1>{% trans "Search posts" %}</h1>
+    <h5>{% blocktranslate with news_total=news_search|length %} Total: {{news_total}} {% endblocktranslate %}</h5>
     <hr>
     <!-- Перед таблицей добавим форму для поиска -->
     <form method="GET">
         {{ filter.form }}
-        <input type="submit" value="Найти">
+        <input type="submit" value="{% trans 'Search' %}">
     </form>
     <hr>
     {% if news_search and filter.qs %}
         <table>
             <tr>
                 <th>
-                    Заголовок
+                    {% trans "Title" %}
                 </th>
                 <th>
-                    Дата публикации
+                    {% trans "Publish date" %}
                 </th>
                 <th>
-                    Краткое содержание
+                    {% trans "Summary" %}
                 </th>
             </tr>
         {% for post in filter.qs %}
@@ -45,6 +47,6 @@ Search news
         {% endfor %}
         </table>
     {% else %}
-        <h2>Статей нет!</h2>
+        <h2>{% trans "Nothing here" %}</h2>
     {% endif %}
 {% endblock content %}

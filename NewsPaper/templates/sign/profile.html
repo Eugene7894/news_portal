@@ -1,15 +1,17 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
+
 {% block title %}
-Profile
+{% trans "Profile" %}
 {% endblock title %}
 
 {% block content %}
-    <h3>Your Profile</h3>
+    <h3>{% trans "Your Profile" %}</h3>
     <table>
             <tr>
                 <th>
-                    Username
+                    {% trans "Username" %}
                 </th>
                 <td>
                     {{ user.username }}
@@ -17,7 +19,7 @@ Profile
             </tr>
             <tr>
                 <th>
-                    First Name
+                    {% trans "First Name" %}
                 </th>
                 <td>
                     {{ user.first_name }}
@@ -25,7 +27,7 @@ Profile
             </tr>
             <tr>
                 <th>
-                    Last Name
+                    {% trans "Last Name" %}
                 </th>
                 <td>
                     {{ user.last_name }}
@@ -33,18 +35,16 @@ Profile
             </tr>
             <tr>
                 <th>
-                    Email
+                    {% trans "Email" %}
                 </th>
                 <td>
                     {{ user.email }}
                 </td>
             </tr>
     </table>
-<!--{% if is_not_author %}
-    <button> <a href="http://127.0.0.1:8000/sign/upgrade/">Стать автором!</a> </button>
-    {% endif %}-->
+
 {% if is_not_author %}
-    <button> <a href="{% url 'upgrade' %}">Стать автором!</a> </button>
+    <button> <a href="{% url 'upgrade' %}">{% trans "Become author!" %}</a> </button>
     {% endif %}
-<p><a href="{% url 'profile_edit' user.id %}">Edit Profile</a></p>
+<p><a href="{% url 'profile_edit' user.id %}">{% trans "Edit Profile" %}</a></p>
 {% endblock content %}

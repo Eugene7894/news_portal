@@ -14,3 +14,205 @@ Traceback (most recent call last):
     raise TemplateDoesNotExist(', '.join(template_name_list), chain=chain)
 django.template.exceptions.TemplateDoesNotExist: news/posts.html
 %(asctime)s %(levelname)s %"GET /news/37 HTTP/1.1" 500 87126s %(pathname)s %(exc_info)s
+2022-04-14 21:49:09,780 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'set_language' not found. 'set_language' is not a valid view function or pattern name."), <traceback object at 0x0000018B591123C0>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 153, in render
+    return compiled_parent._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\cache.py", line 47, in render
+    value = self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\defaulttags.py", line 442, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\urls\resolvers.py", line 729, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'set_language' not found. 'set_language' is not a valid view function or pattern name.
+2022-04-14 21:49:09,790 ERROR "GET /news/ HTTP/1.1" 500 202707 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-14 23:28:53,819 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Could not parse the remainder: \'"News\' from \'"News\''), <traceback object at 0x00000236AE2CA900>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 130, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 127, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 106, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    return parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\cache.py", line 78, in do_cache
+    nodelist = parser.parse(('endcache',))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\i18n.py", line 379, in do_translate
+    message_string = parser.compile_filter(bits[1])
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 593, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 692, in __init__
+    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '"News' from '"News'
+2022-04-14 23:28:53,828 ERROR "GET /news/ HTTP/1.1" 500 261164 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-14 23:29:02,636 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Could not parse the remainder: \'"News\' from \'"News\''), <traceback object at 0x00000236AE1F8600>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 130, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 127, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 106, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    return parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\cache.py", line 78, in do_cache
+    nodelist = parser.parse(('endcache',))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\i18n.py", line 379, in do_translate
+    message_string = parser.compile_filter(bits[1])
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 593, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 692, in __init__
+    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '"News' from '"News'
+2022-04-14 23:29:02,645 ERROR "GET /news/ HTTP/1.1" 500 261027 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-15 00:39:37,807 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Unknown argument for 'blocktranslate' tag: 'amount=news|items_counter'."), <traceback object at 0x000002D9EBD93380>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 163, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    return parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 284, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 222, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\i18n.py", line 510, in do_block_translate
+    raise TemplateSyntaxError('Unknown argument for %r tag: %r.' %
+django.template.exceptions.TemplateSyntaxError: Unknown argument for 'blocktranslate' tag: 'amount=news|items_counter'.
+2022-04-15 00:39:37,817 ERROR "GET /news/ HTTP/1.1" 500 241382 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None

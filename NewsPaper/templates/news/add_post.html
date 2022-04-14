@@ -1,12 +1,14 @@
 {% extends 'flatpages/default.html' %}
+
+{% load i18n %}
  
-{% block title %} Post add{% endblock title %}
+{% block title %} {% trans "Post add" %} {% endblock title %}
  
 {% block content %}
-<h3>Пост</h3>
+<h3>{% trans "Post" %}</h3>
 <form method="POST">
     {% csrf_token %} 
     {{ form.as_p }}
-    <input type="submit" value="Добавить пост">
+    <input type="submit" value="{% trans 'Add post' %}">
 </form>
 {% endblock content %}
