@@ -39,6 +39,7 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',  # обязательно перед админом
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,6 +73,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+
+    'news.middlewares.TimezoneMiddleware',
 ]
 
 LOGGING = {
@@ -237,7 +240,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOCALE_PATH = [
+LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
 

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Author, Category, Post, Comment, PostCategory
+from modeltranslation.admin import TranslationAdmin
 
 
 def nullfy_author_rate(modeladmin, request, queryset):  # request — объект хранящий информацию о запросе и queryset —
@@ -28,11 +29,19 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ('categoryName', 'subscribers__username')
 
 
+class CategoryTranslationAdmin(TranslationAdmin):
+    model = Category
+
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'get_categories',
                     'categoryType', 'creationDate', 'rate')
     list_filter = ('author__authorUser__username', 'postCategory__categoryName', 'categoryType', 'creationDate')
     search_fields = ('author__authorUser__username', 'postCategory__categoryName', 'title')
+
+
+class PostTranslationAdmin(TranslationAdmin):
+    model = Post
 
 
 class PostCategoryAdmin(admin.ModelAdmin):

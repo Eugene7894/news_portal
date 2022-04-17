@@ -216,3 +216,529 @@ Traceback (most recent call last):
     raise TemplateSyntaxError('Unknown argument for %r tag: %r.' %
 django.template.exceptions.TemplateSyntaxError: Unknown argument for 'blocktranslate' tag: 'amount=news|items_counter'.
 2022-04-15 00:39:37,817 ERROR "GET /news/ HTTP/1.1" 500 241382 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-17 01:19:49,424 ERROR Internal Server Error: /news/add C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'kombu.exceptions.OperationalError'>, OperationalError('Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.'), <traceback object at 0x000001FBDDBE66C0>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 607, in connect
+    sock = self.retry.call_with_retry(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\retry.py", line 45, in call_with_retry
+    return do()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 608, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 641, in _connect
+    for res in socket.getaddrinfo(
+  File "C:\python 3.10.2\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 119, in reconnect_on_error
+    yield
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 169, in _consume_from
+    self._pubsub.subscribe(key)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\client.py", line 1530, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\client.py", line 1371, in execute_command
+    self.connection = self.connection_pool.get_connection(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 1370, in get_connection
+    connection.connect()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 613, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 607, in connect
+    sock = self.retry.call_with_retry(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\retry.py", line 45, in call_with_retry
+    return do()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 608, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 641, in _connect
+    for res in socket.getaddrinfo(
+  File "C:\python 3.10.2\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\kombu\connection.py", line 447, in _reraise_as_library_errors
+    yield
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\base.py", line 787, in send_task
+    self.backend.on_task_call(P, task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 365, in on_task_call
+    self.result_consumer.consume_from(task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 161, in consume_from
+    return self.start(task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 139, in start
+    self._consume_from(initial_task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 168, in _consume_from
+    with self.reconnect_on_error():
+  File "C:\python 3.10.2\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 122, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 376, in ensure
+    return retry_over_time(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\kombu\utils\functional.py", line 312, in retry_over_time
+    return fun(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 106, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\commands\core.py", line 1404, in mget
+    return self.execute_command("MGET", *args, **options)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\client.py", line 1173, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 1370, in get_connection
+    connection.connect()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 613, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\contrib\auth\mixins.py", line 104, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 101, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 174, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 144, in post
+    return self.form_valid(form)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 127, in form_valid
+    self.object = form.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\forms\models.py", line 467, in save
+    self._save_m2m()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\forms\models.py", line 449, in _save_m2m
+    f.save_form_data(self.instance, cleaned_data[f.name])
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related.py", line 1695, in save_form_data
+    getattr(instance, self.attname).set(data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1014, in set
+    self.add(*new_objs, through_defaults=through_defaults)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 949, in add
+    self._add_items(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1158, in _add_items
+    signals.m2m_changed.send(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\dispatch\dispatcher.py", line 170, in send
+    return [
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\dispatch\dispatcher.py", line 171, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Python_projects\news_portal\NewsPaper\news\signals.py", line 11, in send_sub_mail
+    send_sub_mail_after_post.delay(instance.id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\task.py", line 425, in delay
+    return self.apply_async(args, kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\task.py", line 575, in apply_async
+    return app.send_task(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\base.py", line 785, in send_task
+    with P.connection._reraise_as_library_errors():
+  File "C:\python 3.10.2\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\kombu\connection.py", line 451, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.
+2022-04-17 01:19:49,459 ERROR "POST /news/add HTTP/1.1" 500 316004 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-17 01:22:32,368 ERROR Internal Server Error: /news/add C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'kombu.exceptions.OperationalError'>, OperationalError('Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.'), <traceback object at 0x000001FBDDD87040>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 607, in connect
+    sock = self.retry.call_with_retry(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\retry.py", line 45, in call_with_retry
+    return do()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 608, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 641, in _connect
+    for res in socket.getaddrinfo(
+  File "C:\python 3.10.2\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 119, in reconnect_on_error
+    yield
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 169, in _consume_from
+    self._pubsub.subscribe(key)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\client.py", line 1530, in subscribe
+    ret_val = self.execute_command("SUBSCRIBE", *new_channels.keys())
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\client.py", line 1371, in execute_command
+    self.connection = self.connection_pool.get_connection(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 1370, in get_connection
+    connection.connect()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 613, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 607, in connect
+    sock = self.retry.call_with_retry(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\retry.py", line 45, in call_with_retry
+    return do()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 608, in <lambda>
+    lambda: self._connect(), lambda error: self.disconnect(error)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 641, in _connect
+    for res in socket.getaddrinfo(
+  File "C:\python 3.10.2\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\kombu\connection.py", line 447, in _reraise_as_library_errors
+    yield
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\base.py", line 787, in send_task
+    self.backend.on_task_call(P, task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 365, in on_task_call
+    self.result_consumer.consume_from(task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 161, in consume_from
+    return self.start(task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 139, in start
+    self._consume_from(initial_task_id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 168, in _consume_from
+    with self.reconnect_on_error():
+  File "C:\python 3.10.2\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 122, in reconnect_on_error
+    self._ensure(self._reconnect_pubsub, ())
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 376, in ensure
+    return retry_over_time(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\kombu\utils\functional.py", line 312, in retry_over_time
+    return fun(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\backends\redis.py", line 106, in _reconnect_pubsub
+    metas = self.backend.client.mget(self.subscribed_to)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\commands\core.py", line 1404, in mget
+    return self.execute_command("MGET", *args, **options)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\client.py", line 1173, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 1370, in get_connection
+    connection.connect()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\redis\connection.py", line 613, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\contrib\auth\mixins.py", line 104, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\base.py", line 101, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 174, in post
+    return super().post(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 144, in post
+    return self.form_valid(form)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\generic\edit.py", line 127, in form_valid
+    self.object = form.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\forms\models.py", line 467, in save
+    self._save_m2m()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\forms\models.py", line 449, in _save_m2m
+    f.save_form_data(self.instance, cleaned_data[f.name])
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related.py", line 1695, in save_form_data
+    getattr(instance, self.attname).set(data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1014, in set
+    self.add(*new_objs, through_defaults=through_defaults)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 949, in add
+    self._add_items(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1158, in _add_items
+    signals.m2m_changed.send(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\dispatch\dispatcher.py", line 170, in send
+    return [
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\dispatch\dispatcher.py", line 171, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "C:\Python_projects\news_portal\NewsPaper\news\signals.py", line 11, in send_sub_mail
+    send_sub_mail_after_post.delay(instance.id)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\task.py", line 425, in delay
+    return self.apply_async(args, kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\task.py", line 575, in apply_async
+    return app.send_task(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\celery\app\base.py", line 785, in send_task
+    with P.connection._reraise_as_library_errors():
+  File "C:\python 3.10.2\lib\contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\kombu\connection.py", line 451, in _reraise_as_library_errors
+    raise ConnectionError(str(exc)) from exc
+kombu.exceptions.OperationalError: Error 11001 connecting to redis-14383.c263.us-east-1-2.ec2.cloud.redislabs.com:14383. getaddrinfo failed.
+2022-04-17 01:22:32,387 ERROR "POST /news/add HTTP/1.1" 500 316178 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-17 18:07:33,714 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError('Unknown argument for \'trans\' tag: \'zone:\'. The only options available are \'noop\', \'context\' "xxx", and \'as VAR\'.'), <traceback object at 0x00000241102AD100>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 130, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 127, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 106, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    return parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\cache.py", line 78, in do_cache
+    nodelist = parser.parse(('endcache',))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\templatetags\i18n.py", line 417, in do_translate
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Unknown argument for 'trans' tag: 'zone:'. The only options available are 'noop', 'context' "xxx", and 'as VAR'.
+2022-04-17 18:07:33,724 ERROR "GET /news/ HTTP/1.1" 500 269475 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-17 18:13:30,738 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid filter: 'timezone'"), <traceback object at 0x00000241103F58C0>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 163, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
+    return parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 284, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 508, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 506, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 222, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 479, in parse
+    raise self.error(token, e)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 477, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 593, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 687, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 599, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'timezone'
+2022-04-17 18:13:30,746 ERROR "GET /news/ HTTP/1.1" 500 263641 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-17 18:14:32,393 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.base.VariableDoesNotExist'>, VariableDoesNotExist('Failed lookup for key [%s] in %r', ('TIME_ZONE', [{'True': True, 'False': False, 'None': None}, {}, {}, {'paginator': <django.core.paginator.Paginator object at 0x0000024110198910>, 'page_obj': <Page 1 of 2>, 'is_paginated': True, 'object_list': <MultilingualQuerySet [<Post: ыкыкет, рейт 0, дата 04/16/2022, 22:22:08>, <Post: ыкыкет, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Названы лучшие продукты для повышения уровня тестостерона, рейт 6, дата 01/26/2022, 17:11:22>, <Post: Сборная России по мини-футболу разгромила хорватов на чемпионате Европы, рейт 5, дата 01/26/2022, 17:10:32>, <Post: Россиянам посоветовали лучшие продукты для укрепления суставов, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Ученые объяснили, откуда на Земле появились океан, рейт 8, дата 01/26/2022, 17:06:11>, <Post: "Роскосмос" работает над версией "Ангары" с возвращаемыми блоками, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Ученые изменили прогноз об эволюции Земли, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Элементы ЗОЖ, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Бабиков выиграл серебро чемпионата Европы в индивидуальной гонке, рейт 4, дата 01/26/2022, 16:57:11>]>, 'news': <MultilingualQuerySet [<Post: ыкыкет, рейт 0, дата 04/16/2022, 22:22:08>, <Post: ыкыкет, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Названы лучшие продукты для повышения уровня тестостерона, рейт 6, дата 01/26/2022, 17:11:22>, <Post: Сборная России по мини-футболу разгромила хорватов на чемпионате Европы, рейт 5, дата 01/26/2022, 17:10:32>, <Post: Россиянам посоветовали лучшие продукты для укрепления суставов, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Ученые объяснили, откуда на Земле появились океан, рейт 8, дата 01/26/2022, 17:06:11>, <Post: "Роскосмос" работает над версией "Ангары" с возвращаемыми блоками, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Ученые изменили прогноз об эволюции Земли, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Элементы ЗОЖ, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Бабиков выиграл серебро чемпионата Европы в индивидуальной гонке, рейт 4, дата 01/26/2022, 16:57:11>]>, 'view': <news.views.PostsList object at 0x000002411019AFE0>, 'is_not_author': False, 'categories': <MultilingualQuerySet [<Category: Обучение>, <Category: Спорт>, <Category: Политика>, <Category: Здоровье>, <Category: Наука>]>, 'current_time': datetime.datetime(2022, 4, 17, 7, 14, 32, 258547, tzinfo=zoneinfo.ZoneInfo(key='US/Alaska')), 'timezones': ['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers', 'Africa/Asmara', 'Africa/Bamako', 'Africa/Bangui', 'Africa/Banjul', 'Africa/Bissau', 'Africa/Blantyre', 'Africa/Brazzaville', 'Africa/Bujumbura', 'Africa/Cairo', 'Africa/Casablanca', 'Africa/Ceuta', 'Africa/Conakry', 'Africa/Dakar', 'Africa/Dar_es_Salaam', 'Africa/Djibouti', 'Africa/Douala', 'Africa/El_Aaiun', 'Africa/Freetown', 'Africa/Gaborone', 'Africa/Harare', 'Africa/Johannesburg', 'Africa/Juba', 'Africa/Kampala', 'Africa/Khartoum', 'Africa/Kigali', 'Africa/Kinshasa', 'Africa/Lagos', 'Africa/Libreville', 'Africa/Lome', 'Africa/Luanda', 'Africa/Lubumbashi', 'Africa/Lusaka', 'Africa/Malabo', 'Africa/Maputo', 'Africa/Maseru', 'Africa/Mbabane', 'Africa/Mogadishu', 'Africa/Monrovia', 'Africa/Nairobi', 'Africa/Ndjamena', 'Africa/Niamey', 'Africa/Nouakchott', 'Africa/Ouagadougou', 'Africa/Porto-Novo', 'Africa/Sao_Tome', 'Africa/Tripoli', 'Africa/Tunis', 'Africa/Windhoek', 'America/Adak', 'America/Anchorage', 'America/Anguilla', 'America/Antigua', 'America/Araguaina', 'America/Argentina/Buenos_Aires', 'America/Argentina/Catamarca', 'America/Argentina/Cordoba', 'America/Argentina/Jujuy', 'America/Argentina/La_Rioja', 'America/Argentina/Mendoza', 'America/Argentina/Rio_Gallegos', 'America/Argentina/Salta', 'America/Argentina/San_Juan', 'America/Argentina/San_Luis', 'America/Argentina/Tucuman', 'America/Argentina/Ushuaia', 'America/Aruba', 'America/Asuncion', 'America/Atikokan', 'America/Bahia', 'America/Bahia_Banderas', 'America/Barbados', 'America/Belem', 'America/Belize', 'America/Blanc-Sablon', 'America/Boa_Vista', 'America/Bogota', 'America/Boise', 'America/Cambridge_Bay', 'America/Campo_Grande', 'America/Cancun', 'America/Caracas', 'America/Cayenne', 'America/Cayman', 'America/Chicago', 'America/Chihuahua', 'America/Costa_Rica', 'America/Creston', 'America/Cuiaba', 'America/Curacao', 'America/Danmarkshavn', 'America/Dawson', 'America/Dawson_Creek', 'America/Denver', 'America/Detroit', 'America/Dominica', 'America/Edmonton', 'America/Eirunepe', 'America/El_Salvador', 'America/Fort_Nelson', 'America/Fortaleza', 'America/Glace_Bay', 'America/Goose_Bay', 'America/Grand_Turk', 'America/Grenada', 'America/Guadeloupe', 'America/Guatemala', 'America/Guayaquil', 'America/Guyana', 'America/Halifax', 'America/Havana', 'America/Hermosillo', 'America/Indiana/Indianapolis', 'America/Indiana/Knox', 'America/Indiana/Marengo', 'America/Indiana/Petersburg', 'America/Indiana/Tell_City', 'America/Indiana/Vevay', 'America/Indiana/Vincennes', 'America/Indiana/Winamac', 'America/Inuvik', 'America/Iqaluit', 'America/Jamaica', 'America/Juneau', 'America/Kentucky/Louisville', 'America/Kentucky/Monticello', 'America/Kralendijk', 'America/La_Paz', 'America/Lima', 'America/Los_Angeles', 'America/Lower_Princes', 'America/Maceio', 'America/Managua', 'America/Manaus', 'America/Marigot', 'America/Martinique', 'America/Matamoros', 'America/Mazatlan', 'America/Menominee', 'America/Merida', 'America/Metlakatla', 'America/Mexico_City', 'America/Miquelon', 'America/Moncton', 'America/Monterrey', 'America/Montevideo', 'America/Montserrat', 'America/Nassau', 'America/New_York', 'America/Nipigon', 'America/Nome', 'America/Noronha', 'America/North_Dakota/Beulah', 'America/North_Dakota/Center', 'America/North_Dakota/New_Salem', 'America/Nuuk', 'America/Ojinaga', 'America/Panama', 'America/Pangnirtung', 'America/Paramaribo', 'America/Phoenix', 'America/Port-au-Prince', 'America/Port_of_Spain', 'America/Porto_Velho', 'America/Puerto_Rico', 'America/Punta_Arenas', 'America/Rainy_River', 'America/Rankin_Inlet', 'America/Recife', 'America/Regina', 'America/Resolute', 'America/Rio_Branco', 'America/Santarem', 'America/Santiago', 'America/Santo_Domingo', 'America/Sao_Paulo', 'America/Scoresbysund', 'America/Sitka', 'America/St_Barthelemy', 'America/St_Johns', 'America/St_Kitts', 'America/St_Lucia', 'America/St_Thomas', 'America/St_Vincent', 'America/Swift_Current', 'America/Tegucigalpa', 'America/Thule', 'America/Thunder_Bay', 'America/Tijuana', 'America/Toronto', 'America/Tortola', 'America/Vancouver', 'America/Whitehorse', 'America/Winnipeg', 'America/Yakutat', 'America/Yellowknife', 'Antarctica/Casey', 'Antarctica/Davis', 'Antarctica/DumontDUrville', 'Antarctica/Macquarie', 'Antarctica/Mawson', 'Antarctica/McMurdo', 'Antarctica/Palmer', 'Antarctica/Rothera', 'Antarctica/Syowa', 'Antarctica/Troll', 'Antarctica/Vostok', 'Arctic/Longyearbyen', 'Asia/Aden', 'Asia/Almaty', 'Asia/Amman', 'Asia/Anadyr', 'Asia/Aqtau', 'Asia/Aqtobe', 'Asia/Ashgabat', 'Asia/Atyrau', 'Asia/Baghdad', 'Asia/Bahrain', 'Asia/Baku', 'Asia/Bangkok', 'Asia/Barnaul', 'Asia/Beirut', 'Asia/Bishkek', 'Asia/Brunei', 'Asia/Chita', 'Asia/Choibalsan', 'Asia/Colombo', 'Asia/Damascus', 'Asia/Dhaka', 'Asia/Dili', 'Asia/Dubai', 'Asia/Dushanbe', 'Asia/Famagusta', 'Asia/Gaza', 'Asia/Hebron', 'Asia/Ho_Chi_Minh', 'Asia/Hong_Kong', 'Asia/Hovd', 'Asia/Irkutsk', 'Asia/Jakarta', 'Asia/Jayapura', 'Asia/Jerusalem', 'Asia/Kabul', 'Asia/Kamchatka', 'Asia/Karachi', 'Asia/Kathmandu', 'Asia/Khandyga', 'Asia/Kolkata', 'Asia/Krasnoyarsk', 'Asia/Kuala_Lumpur', 'Asia/Kuching', 'Asia/Kuwait', 'Asia/Macau', 'Asia/Magadan', 'Asia/Makassar', 'Asia/Manila', 'Asia/Muscat', 'Asia/Nicosia', 'Asia/Novokuznetsk', 'Asia/Novosibirsk', 'Asia/Omsk', 'Asia/Oral', 'Asia/Phnom_Penh', 'Asia/Pontianak', 'Asia/Pyongyang', 'Asia/Qatar', 'Asia/Qostanay', 'Asia/Qyzylorda', 'Asia/Riyadh', 'Asia/Sakhalin', 'Asia/Samarkand', 'Asia/Seoul', 'Asia/Shanghai', 'Asia/Singapore', 'Asia/Srednekolymsk', 'Asia/Taipei', 'Asia/Tashkent', 'Asia/Tbilisi', 'Asia/Tehran', 'Asia/Thimphu', 'Asia/Tokyo', 'Asia/Tomsk', 'Asia/Ulaanbaatar', 'Asia/Urumqi', 'Asia/Ust-Nera', 'Asia/Vientiane', 'Asia/Vladivostok', 'Asia/Yakutsk', 'Asia/Yangon', 'Asia/Yekaterinburg', 'Asia/Yerevan', 'Atlantic/Azores', 'Atlantic/Bermuda', 'Atlantic/Canary', 'Atlantic/Cape_Verde', 'Atlantic/Faroe', 'Atlantic/Madeira', 'Atlantic/Reykjavik', 'Atlantic/South_Georgia', 'Atlantic/St_Helena', 'Atlantic/Stanley', 'Australia/Adelaide', 'Australia/Brisbane', 'Australia/Broken_Hill', 'Australia/Darwin', 'Australia/Eucla', 'Australia/Hobart', 'Australia/Lindeman', 'Australia/Lord_Howe', 'Australia/Melbourne', 'Australia/Perth', 'Australia/Sydney', 'Canada/Atlantic', 'Canada/Central', 'Canada/Eastern', 'Canada/Mountain', 'Canada/Newfoundland', 'Canada/Pacific', 'Europe/Amsterdam', 'Europe/Andorra', 'Europe/Astrakhan', 'Europe/Athens', 'Europe/Belgrade', 'Europe/Berlin', 'Europe/Bratislava', 'Europe/Brussels', 'Europe/Bucharest', 'Europe/Budapest', 'Europe/Busingen', 'Europe/Chisinau', 'Europe/Copenhagen', 'Europe/Dublin', 'Europe/Gibraltar', 'Europe/Guernsey', 'Europe/Helsinki', 'Europe/Isle_of_Man', 'Europe/Istanbul', 'Europe/Jersey', 'Europe/Kaliningrad', 'Europe/Kiev', 'Europe/Kirov', 'Europe/Lisbon', 'Europe/Ljubljana', 'Europe/London', 'Europe/Luxembourg', 'Europe/Madrid', 'Europe/Malta', 'Europe/Mariehamn', 'Europe/Minsk', 'Europe/Monaco', 'Europe/Moscow', 'Europe/Oslo', 'Europe/Paris', 'Europe/Podgorica', 'Europe/Prague', 'Europe/Riga', 'Europe/Rome', 'Europe/Samara', 'Europe/San_Marino', 'Europe/Sarajevo', 'Europe/Saratov', 'Europe/Simferopol', 'Europe/Skopje', 'Europe/Sofia', 'Europe/Stockholm', 'Europe/Tallinn', 'Europe/Tirane', 'Europe/Ulyanovsk', 'Europe/Uzhgorod', 'Europe/Vaduz', 'Europe/Vatican', 'Europe/Vienna', 'Europe/Vilnius', 'Europe/Volgograd', 'Europe/Warsaw', 'Europe/Zagreb', 'Europe/Zaporozhye', 'Europe/Zurich', 'GMT', 'Indian/Antananarivo', 'Indian/Chagos', 'Indian/Christmas', 'Indian/Cocos', 'Indian/Comoro', 'Indian/Kerguelen', 'Indian/Mahe', 'Indian/Maldives', 'Indian/Mauritius', 'Indian/Mayotte', 'Indian/Reunion', 'Pacific/Apia', 'Pacific/Auckland', 'Pacific/Bougainville', 'Pacific/Chatham', 'Pacific/Chuuk', 'Pacific/Easter', 'Pacific/Efate', 'Pacific/Fakaofo', 'Pacific/Fiji', 'Pacific/Funafuti', 'Pacific/Galapagos', 'Pacific/Gambier', 'Pacific/Guadalcanal', 'Pacific/Guam', 'Pacific/Honolulu', 'Pacific/Kanton', 'Pacific/Kiritimati', 'Pacific/Kosrae', 'Pacific/Kwajalein', 'Pacific/Majuro', 'Pacific/Marquesas', 'Pacific/Midway', 'Pacific/Nauru', 'Pacific/Niue', 'Pacific/Norfolk', 'Pacific/Noumea', 'Pacific/Pago_Pago', 'Pacific/Palau', 'Pacific/Pitcairn', 'Pacific/Pohnpei', 'Pacific/Port_Moresby', 'Pacific/Rarotonga', 'Pacific/Saipan', 'Pacific/Tahiti', 'Pacific/Tarawa', 'Pacific/Tongatapu', 'Pacific/Wake', 'Pacific/Wallis', 'US/Alaska', 'US/Arizona', 'US/Central', 'US/Eastern', 'US/Hawaii', 'US/Mountain', 'US/Pacific', 'UTC']}])), <traceback object at 0x0000024110483C40>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 862, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'TIME_ZONE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 868, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'TIME_ZONE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 876, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'TIME_ZONE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 153, in render
+    return compiled_parent._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1038, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 722, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 829, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 881, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [TIME_ZONE] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'paginator': <django.core.paginator.Paginator object at 0x0000024110198910>, 'page_obj': <Page 1 of 2>, 'is_paginated': True, 'object_list': <MultilingualQuerySet [<Post: ыкыкет, рейт 0, дата 04/16/2022, 22:22:08>, <Post: ыкыкет, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Названы лучшие продукты для повышения уровня тестостерона, рейт 6, дата 01/26/2022, 17:11:22>, <Post: Сборная России по мини-футболу разгромила хорватов на чемпионате Европы, рейт 5, дата 01/26/2022, 17:10:32>, <Post: Россиянам посоветовали лучшие продукты для укрепления суставов, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Ученые объяснили, откуда на Земле появились океан, рейт 8, дата 01/26/2022, 17:06:11>, <Post: "Роскосмос" работает над версией "Ангары" с возвращаемыми блоками, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Ученые изменили прогноз об эволюции Земли, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Элементы ЗОЖ, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Бабиков выиграл серебро чемпионата Европы в индивидуальной гонке, рейт 4, дата 01/26/2022, 16:57:11>]>, 'news': <MultilingualQuerySet [<Post: ыкыкет, рейт 0, дата 04/16/2022, 22:22:08>, <Post: ыкыкет, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Названы лучшие продукты для повышения уровня тестостерона, рейт 6, дата 01/26/2022, 17:11:22>, <Post: Сборная России по мини-футболу разгромила хорватов на чемпионате Европы, рейт 5, дата 01/26/2022, 17:10:32>, <Post: Россиянам посоветовали лучшие продукты для укрепления суставов, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Ученые объяснили, откуда на Земле появились океан, рейт 8, дата 01/26/2022, 17:06:11>, <Post: "Роскосмос" работает над версией "Ангары" с возвращаемыми блоками, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Ученые изменили прогноз об эволюции Земли, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Элементы ЗОЖ, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Бабиков выиграл серебро чемпионата Европы в индивидуальной гонке, рейт 4, дата 01/26/2022, 16:57:11>]>, 'view': <news.views.PostsList object at 0x000002411019AFE0>, 'is_not_author': False, 'categories': <MultilingualQuerySet [<Category: Обучение>, <Category: Спорт>, <Category: Политика>, <Category: Здоровье>, <Category: Наука>]>, 'current_time': datetime.datetime(2022, 4, 17, 7, 14, 32, 258547, tzinfo=zoneinfo.ZoneInfo(key='US/Alaska')), 'timezones': ['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers', 'Africa/Asmara', 'Africa/Bamako', 'Africa/Bangui', 'Africa/Banjul', 'Africa/Bissau', 'Africa/Blantyre', 'Africa/Brazzaville', 'Africa/Bujumbura', 'Africa/Cairo', 'Africa/Casablanca', 'Africa/Ceuta', 'Africa/Conakry', 'Africa/Dakar', 'Africa/Dar_es_Salaam', 'Africa/Djibouti', 'Africa/Douala', 'Africa/El_Aaiun', 'Africa/Freetown', 'Africa/Gaborone', 'Africa/Harare', 'Africa/Johannesburg', 'Africa/Juba', 'Africa/Kampala', 'Africa/Khartoum', 'Africa/Kigali', 'Africa/Kinshasa', 'Africa/Lagos', 'Africa/Libreville', 'Africa/Lome', 'Africa/Luanda', 'Africa/Lubumbashi', 'Africa/Lusaka', 'Africa/Malabo', 'Africa/Maputo', 'Africa/Maseru', 'Africa/Mbabane', 'Africa/Mogadishu', 'Africa/Monrovia', 'Africa/Nairobi', 'Africa/Ndjamena', 'Africa/Niamey', 'Africa/Nouakchott', 'Africa/Ouagadougou', 'Africa/Porto-Novo', 'Africa/Sao_Tome', 'Africa/Tripoli', 'Africa/Tunis', 'Africa/Windhoek', 'America/Adak', 'America/Anchorage', 'America/Anguilla', 'America/Antigua', 'America/Araguaina', 'America/Argentina/Buenos_Aires', 'America/Argentina/Catamarca', 'America/Argentina/Cordoba', 'America/Argentina/Jujuy', 'America/Argentina/La_Rioja', 'America/Argentina/Mendoza', 'America/Argentina/Rio_Gallegos', 'America/Argentina/Salta', 'America/Argentina/San_Juan', 'America/Argentina/San_Luis', 'America/Argentina/Tucuman', 'America/Argentina/Ushuaia', 'America/Aruba', 'America/Asuncion', 'America/Atikokan', 'America/Bahia', 'America/Bahia_Banderas', 'America/Barbados', 'America/Belem', 'America/Belize', 'America/Blanc-Sablon', 'America/Boa_Vista', 'America/Bogota', 'America/Boise', 'America/Cambridge_Bay', 'America/Campo_Grande', 'America/Cancun', 'America/Caracas', 'America/Cayenne', 'America/Cayman', 'America/Chicago', 'America/Chihuahua', 'America/Costa_Rica', 'America/Creston', 'America/Cuiaba', 'America/Curacao', 'America/Danmarkshavn', 'America/Dawson', 'America/Dawson_Creek', 'America/Denver', 'America/Detroit', 'America/Dominica', 'America/Edmonton', 'America/Eirunepe', 'America/El_Salvador', 'America/Fort_Nelson', 'America/Fortaleza', 'America/Glace_Bay', 'America/Goose_Bay', 'America/Grand_Turk', 'America/Grenada', 'America/Guadeloupe', 'America/Guatemala', 'America/Guayaquil', 'America/Guyana', 'America/Halifax', 'America/Havana', 'America/Hermosillo', 'America/Indiana/Indianapolis', 'America/Indiana/Knox', 'America/Indiana/Marengo', 'America/Indiana/Petersburg', 'America/Indiana/Tell_City', 'America/Indiana/Vevay', 'America/Indiana/Vincennes', 'America/Indiana/Winamac', 'America/Inuvik', 'America/Iqaluit', 'America/Jamaica', 'America/Juneau', 'America/Kentucky/Louisville', 'America/Kentucky/Monticello', 'America/Kralendijk', 'America/La_Paz', 'America/Lima', 'America/Los_Angeles', 'America/Lower_Princes', 'America/Maceio', 'America/Managua', 'America/Manaus', 'America/Marigot', 'America/Martinique', 'America/Matamoros', 'America/Mazatlan', 'America/Menominee', 'America/Merida', 'America/Metlakatla', 'America/Mexico_City', 'America/Miquelon', 'America/Moncton', 'America/Monterrey', 'America/Montevideo', 'America/Montserrat', 'America/Nassau', 'America/New_York', 'America/Nipigon', 'America/Nome', 'America/Noronha', 'America/North_Dakota/Beulah', 'America/North_Dakota/Center', 'America/North_Dakota/New_Salem', 'America/Nuuk', 'America/Ojinaga', 'America/Panama', 'America/Pangnirtung', 'America/Paramaribo', 'America/Phoenix', 'America/Port-au-Prince', 'America/Port_of_Spain', 'America/Porto_Velho', 'America/Puerto_Rico', 'America/Punta_Arenas', 'America/Rainy_River', 'America/Rankin_Inlet', 'America/Recife', 'America/Regina', 'America/Resolute', 'America/Rio_Branco', 'America/Santarem', 'America/Santiago', 'America/Santo_Domingo', 'America/Sao_Paulo', 'America/Scoresbysund', 'America/Sitka', 'America/St_Barthelemy', 'America/St_Johns', 'America/St_Kitts', 'America/St_Lucia', 'America/St_Thomas', 'America/St_Vincent', 'America/Swift_Current', 'America/Tegucigalpa', 'America/Thule', 'America/Thunder_Bay', 'America/Tijuana', 'America/Toronto', 'America/Tortola', 'America/Vancouver', 'America/Whitehorse', 'America/Winnipeg', 'America/Yakutat', 'America/Yellowknife', 'Antarctica/Casey', 'Antarctica/Davis', 'Antarctica/DumontDUrville', 'Antarctica/Macquarie', 'Antarctica/Mawson', 'Antarctica/McMurdo', 'Antarctica/Palmer', 'Antarctica/Rothera', 'Antarctica/Syowa', 'Antarctica/Troll', 'Antarctica/Vostok', 'Arctic/Longyearbyen', 'Asia/Aden', 'Asia/Almaty', 'Asia/Amman', 'Asia/Anadyr', 'Asia/Aqtau', 'Asia/Aqtobe', 'Asia/Ashgabat', 'Asia/Atyrau', 'Asia/Baghdad', 'Asia/Bahrain', 'Asia/Baku', 'Asia/Bangkok', 'Asia/Barnaul', 'Asia/Beirut', 'Asia/Bishkek', 'Asia/Brunei', 'Asia/Chita', 'Asia/Choibalsan', 'Asia/Colombo', 'Asia/Damascus', 'Asia/Dhaka', 'Asia/Dili', 'Asia/Dubai', 'Asia/Dushanbe', 'Asia/Famagusta', 'Asia/Gaza', 'Asia/Hebron', 'Asia/Ho_Chi_Minh', 'Asia/Hong_Kong', 'Asia/Hovd', 'Asia/Irkutsk', 'Asia/Jakarta', 'Asia/Jayapura', 'Asia/Jerusalem', 'Asia/Kabul', 'Asia/Kamchatka', 'Asia/Karachi', 'Asia/Kathmandu', 'Asia/Khandyga', 'Asia/Kolkata', 'Asia/Krasnoyarsk', 'Asia/Kuala_Lumpur', 'Asia/Kuching', 'Asia/Kuwait', 'Asia/Macau', 'Asia/Magadan', 'Asia/Makassar', 'Asia/Manila', 'Asia/Muscat', 'Asia/Nicosia', 'Asia/Novokuznetsk', 'Asia/Novosibirsk', 'Asia/Omsk', 'Asia/Oral', 'Asia/Phnom_Penh', 'Asia/Pontianak', 'Asia/Pyongyang', 'Asia/Qatar', 'Asia/Qostanay', 'Asia/Qyzylorda', 'Asia/Riyadh', 'Asia/Sakhalin', 'Asia/Samarkand', 'Asia/Seoul', 'Asia/Shanghai', 'Asia/Singapore', 'Asia/Srednekolymsk', 'Asia/Taipei', 'Asia/Tashkent', 'Asia/Tbilisi', 'Asia/Tehran', 'Asia/Thimphu', 'Asia/Tokyo', 'Asia/Tomsk', 'Asia/Ulaanbaatar', 'Asia/Urumqi', 'Asia/Ust-Nera', 'Asia/Vientiane', 'Asia/Vladivostok', 'Asia/Yakutsk', 'Asia/Yangon', 'Asia/Yekaterinburg', 'Asia/Yerevan', 'Atlantic/Azores', 'Atlantic/Bermuda', 'Atlantic/Canary', 'Atlantic/Cape_Verde', 'Atlantic/Faroe', 'Atlantic/Madeira', 'Atlantic/Reykjavik', 'Atlantic/South_Georgia', 'Atlantic/St_Helena', 'Atlantic/Stanley', 'Australia/Adelaide', 'Australia/Brisbane', 'Australia/Broken_Hill', 'Australia/Darwin', 'Australia/Eucla', 'Australia/Hobart', 'Australia/Lindeman', 'Australia/Lord_Howe', 'Australia/Melbourne', 'Australia/Perth', 'Australia/Sydney', 'Canada/Atlantic', 'Canada/Central', 'Canada/Eastern', 'Canada/Mountain', 'Canada/Newfoundland', 'Canada/Pacific', 'Europe/Amsterdam', 'Europe/Andorra', 'Europe/Astrakhan', 'Europe/Athens', 'Europe/Belgrade', 'Europe/Berlin', 'Europe/Bratislava', 'Europe/Brussels', 'Europe/Bucharest', 'Europe/Budapest', 'Europe/Busingen', 'Europe/Chisinau', 'Europe/Copenhagen', 'Europe/Dublin', 'Europe/Gibraltar', 'Europe/Guernsey', 'Europe/Helsinki', 'Europe/Isle_of_Man', 'Europe/Istanbul', 'Europe/Jersey', 'Europe/Kaliningrad', 'Europe/Kiev', 'Europe/Kirov', 'Europe/Lisbon', 'Europe/Ljubljana', 'Europe/London', 'Europe/Luxembourg', 'Europe/Madrid', 'Europe/Malta', 'Europe/Mariehamn', 'Europe/Minsk', 'Europe/Monaco', 'Europe/Moscow', 'Europe/Oslo', 'Europe/Paris', 'Europe/Podgorica', 'Europe/Prague', 'Europe/Riga', 'Europe/Rome', 'Europe/Samara', 'Europe/San_Marino', 'Europe/Sarajevo', 'Europe/Saratov', 'Europe/Simferopol', 'Europe/Skopje', 'Europe/Sofia', 'Europe/Stockholm', 'Europe/Tallinn', 'Europe/Tirane', 'Europe/Ulyanovsk', 'Europe/Uzhgorod', 'Europe/Vaduz', 'Europe/Vatican', 'Europe/Vienna', 'Europe/Vilnius', 'Europe/Volgograd', 'Europe/Warsaw', 'Europe/Zagreb', 'Europe/Zaporozhye', 'Europe/Zurich', 'GMT', 'Indian/Antananarivo', 'Indian/Chagos', 'Indian/Christmas', 'Indian/Cocos', 'Indian/Comoro', 'Indian/Kerguelen', 'Indian/Mahe', 'Indian/Maldives', 'Indian/Mauritius', 'Indian/Mayotte', 'Indian/Reunion', 'Pacific/Apia', 'Pacific/Auckland', 'Pacific/Bougainville', 'Pacific/Chatham', 'Pacific/Chuuk', 'Pacific/Easter', 'Pacific/Efate', 'Pacific/Fakaofo', 'Pacific/Fiji', 'Pacific/Funafuti', 'Pacific/Galapagos', 'Pacific/Gambier', 'Pacific/Guadalcanal', 'Pacific/Guam', 'Pacific/Honolulu', 'Pacific/Kanton', 'Pacific/Kiritimati', 'Pacific/Kosrae', 'Pacific/Kwajalein', 'Pacific/Majuro', 'Pacific/Marquesas', 'Pacific/Midway', 'Pacific/Nauru', 'Pacific/Niue', 'Pacific/Norfolk', 'Pacific/Noumea', 'Pacific/Pago_Pago', 'Pacific/Palau', 'Pacific/Pitcairn', 'Pacific/Pohnpei', 'Pacific/Port_Moresby', 'Pacific/Rarotonga', 'Pacific/Saipan', 'Pacific/Tahiti', 'Pacific/Tarawa', 'Pacific/Tongatapu', 'Pacific/Wake', 'Pacific/Wallis', 'US/Alaska', 'US/Arizona', 'US/Central', 'US/Eastern', 'US/Hawaii', 'US/Mountain', 'US/Pacific', 'UTC']}]
+2022-04-17 18:14:32,453 ERROR "GET /news/ HTTP/1.1" 500 454336 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-17 18:15:30,112 ERROR Internal Server Error: /news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.template.base.VariableDoesNotExist'>, VariableDoesNotExist('Failed lookup for key [%s] in %r', ('TIME_ZONE', [{'True': True, 'False': False, 'None': None}, {}, {}, {'paginator': <django.core.paginator.Paginator object at 0x00000241101995A0>, 'page_obj': <Page 1 of 2>, 'is_paginated': True, 'object_list': <MultilingualQuerySet [<Post: , рейт 0, дата 04/16/2022, 22:22:08>, <Post: sfghsr, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Named the best products to increase testosterone levels, рейт 6, дата 01/26/2022, 17:11:22>, <Post: The Russian futsal team defeated the Croats at the European Championship, рейт 5, дата 01/26/2022, 17:10:32>, <Post: The Russians were advised the best products to strengthen joints, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Scientists explain how the ocean appeared on Earth, рейт 8, дата 01/26/2022, 17:06:11>, <Post: Roskosmos is working on a version of the Angara with returnable blocks, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Scientists have changed the forecast about the evolution of the Earth, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Healthy lifestyle elements, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Babikov won the silver of the European Championship in the individual race, рейт 4, дата 01/26/2022, 16:57:11>]>, 'news': <MultilingualQuerySet [<Post: , рейт 0, дата 04/16/2022, 22:22:08>, <Post: sfghsr, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Named the best products to increase testosterone levels, рейт 6, дата 01/26/2022, 17:11:22>, <Post: The Russian futsal team defeated the Croats at the European Championship, рейт 5, дата 01/26/2022, 17:10:32>, <Post: The Russians were advised the best products to strengthen joints, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Scientists explain how the ocean appeared on Earth, рейт 8, дата 01/26/2022, 17:06:11>, <Post: Roskosmos is working on a version of the Angara with returnable blocks, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Scientists have changed the forecast about the evolution of the Earth, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Healthy lifestyle elements, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Babikov won the silver of the European Championship in the individual race, рейт 4, дата 01/26/2022, 16:57:11>]>, 'view': <news.views.PostsList object at 0x0000024110198730>, 'is_not_author': False, 'categories': <MultilingualQuerySet [<Category: Education>, <Category: Sport>, <Category: Politics>, <Category: Health>, <Category: Science>]>, 'current_time': datetime.datetime(2022, 4, 17, 5, 45, 29, 986219, tzinfo=zoneinfo.ZoneInfo(key='Pacific/Marquesas')), 'timezones': ['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers', 'Africa/Asmara', 'Africa/Bamako', 'Africa/Bangui', 'Africa/Banjul', 'Africa/Bissau', 'Africa/Blantyre', 'Africa/Brazzaville', 'Africa/Bujumbura', 'Africa/Cairo', 'Africa/Casablanca', 'Africa/Ceuta', 'Africa/Conakry', 'Africa/Dakar', 'Africa/Dar_es_Salaam', 'Africa/Djibouti', 'Africa/Douala', 'Africa/El_Aaiun', 'Africa/Freetown', 'Africa/Gaborone', 'Africa/Harare', 'Africa/Johannesburg', 'Africa/Juba', 'Africa/Kampala', 'Africa/Khartoum', 'Africa/Kigali', 'Africa/Kinshasa', 'Africa/Lagos', 'Africa/Libreville', 'Africa/Lome', 'Africa/Luanda', 'Africa/Lubumbashi', 'Africa/Lusaka', 'Africa/Malabo', 'Africa/Maputo', 'Africa/Maseru', 'Africa/Mbabane', 'Africa/Mogadishu', 'Africa/Monrovia', 'Africa/Nairobi', 'Africa/Ndjamena', 'Africa/Niamey', 'Africa/Nouakchott', 'Africa/Ouagadougou', 'Africa/Porto-Novo', 'Africa/Sao_Tome', 'Africa/Tripoli', 'Africa/Tunis', 'Africa/Windhoek', 'America/Adak', 'America/Anchorage', 'America/Anguilla', 'America/Antigua', 'America/Araguaina', 'America/Argentina/Buenos_Aires', 'America/Argentina/Catamarca', 'America/Argentina/Cordoba', 'America/Argentina/Jujuy', 'America/Argentina/La_Rioja', 'America/Argentina/Mendoza', 'America/Argentina/Rio_Gallegos', 'America/Argentina/Salta', 'America/Argentina/San_Juan', 'America/Argentina/San_Luis', 'America/Argentina/Tucuman', 'America/Argentina/Ushuaia', 'America/Aruba', 'America/Asuncion', 'America/Atikokan', 'America/Bahia', 'America/Bahia_Banderas', 'America/Barbados', 'America/Belem', 'America/Belize', 'America/Blanc-Sablon', 'America/Boa_Vista', 'America/Bogota', 'America/Boise', 'America/Cambridge_Bay', 'America/Campo_Grande', 'America/Cancun', 'America/Caracas', 'America/Cayenne', 'America/Cayman', 'America/Chicago', 'America/Chihuahua', 'America/Costa_Rica', 'America/Creston', 'America/Cuiaba', 'America/Curacao', 'America/Danmarkshavn', 'America/Dawson', 'America/Dawson_Creek', 'America/Denver', 'America/Detroit', 'America/Dominica', 'America/Edmonton', 'America/Eirunepe', 'America/El_Salvador', 'America/Fort_Nelson', 'America/Fortaleza', 'America/Glace_Bay', 'America/Goose_Bay', 'America/Grand_Turk', 'America/Grenada', 'America/Guadeloupe', 'America/Guatemala', 'America/Guayaquil', 'America/Guyana', 'America/Halifax', 'America/Havana', 'America/Hermosillo', 'America/Indiana/Indianapolis', 'America/Indiana/Knox', 'America/Indiana/Marengo', 'America/Indiana/Petersburg', 'America/Indiana/Tell_City', 'America/Indiana/Vevay', 'America/Indiana/Vincennes', 'America/Indiana/Winamac', 'America/Inuvik', 'America/Iqaluit', 'America/Jamaica', 'America/Juneau', 'America/Kentucky/Louisville', 'America/Kentucky/Monticello', 'America/Kralendijk', 'America/La_Paz', 'America/Lima', 'America/Los_Angeles', 'America/Lower_Princes', 'America/Maceio', 'America/Managua', 'America/Manaus', 'America/Marigot', 'America/Martinique', 'America/Matamoros', 'America/Mazatlan', 'America/Menominee', 'America/Merida', 'America/Metlakatla', 'America/Mexico_City', 'America/Miquelon', 'America/Moncton', 'America/Monterrey', 'America/Montevideo', 'America/Montserrat', 'America/Nassau', 'America/New_York', 'America/Nipigon', 'America/Nome', 'America/Noronha', 'America/North_Dakota/Beulah', 'America/North_Dakota/Center', 'America/North_Dakota/New_Salem', 'America/Nuuk', 'America/Ojinaga', 'America/Panama', 'America/Pangnirtung', 'America/Paramaribo', 'America/Phoenix', 'America/Port-au-Prince', 'America/Port_of_Spain', 'America/Porto_Velho', 'America/Puerto_Rico', 'America/Punta_Arenas', 'America/Rainy_River', 'America/Rankin_Inlet', 'America/Recife', 'America/Regina', 'America/Resolute', 'America/Rio_Branco', 'America/Santarem', 'America/Santiago', 'America/Santo_Domingo', 'America/Sao_Paulo', 'America/Scoresbysund', 'America/Sitka', 'America/St_Barthelemy', 'America/St_Johns', 'America/St_Kitts', 'America/St_Lucia', 'America/St_Thomas', 'America/St_Vincent', 'America/Swift_Current', 'America/Tegucigalpa', 'America/Thule', 'America/Thunder_Bay', 'America/Tijuana', 'America/Toronto', 'America/Tortola', 'America/Vancouver', 'America/Whitehorse', 'America/Winnipeg', 'America/Yakutat', 'America/Yellowknife', 'Antarctica/Casey', 'Antarctica/Davis', 'Antarctica/DumontDUrville', 'Antarctica/Macquarie', 'Antarctica/Mawson', 'Antarctica/McMurdo', 'Antarctica/Palmer', 'Antarctica/Rothera', 'Antarctica/Syowa', 'Antarctica/Troll', 'Antarctica/Vostok', 'Arctic/Longyearbyen', 'Asia/Aden', 'Asia/Almaty', 'Asia/Amman', 'Asia/Anadyr', 'Asia/Aqtau', 'Asia/Aqtobe', 'Asia/Ashgabat', 'Asia/Atyrau', 'Asia/Baghdad', 'Asia/Bahrain', 'Asia/Baku', 'Asia/Bangkok', 'Asia/Barnaul', 'Asia/Beirut', 'Asia/Bishkek', 'Asia/Brunei', 'Asia/Chita', 'Asia/Choibalsan', 'Asia/Colombo', 'Asia/Damascus', 'Asia/Dhaka', 'Asia/Dili', 'Asia/Dubai', 'Asia/Dushanbe', 'Asia/Famagusta', 'Asia/Gaza', 'Asia/Hebron', 'Asia/Ho_Chi_Minh', 'Asia/Hong_Kong', 'Asia/Hovd', 'Asia/Irkutsk', 'Asia/Jakarta', 'Asia/Jayapura', 'Asia/Jerusalem', 'Asia/Kabul', 'Asia/Kamchatka', 'Asia/Karachi', 'Asia/Kathmandu', 'Asia/Khandyga', 'Asia/Kolkata', 'Asia/Krasnoyarsk', 'Asia/Kuala_Lumpur', 'Asia/Kuching', 'Asia/Kuwait', 'Asia/Macau', 'Asia/Magadan', 'Asia/Makassar', 'Asia/Manila', 'Asia/Muscat', 'Asia/Nicosia', 'Asia/Novokuznetsk', 'Asia/Novosibirsk', 'Asia/Omsk', 'Asia/Oral', 'Asia/Phnom_Penh', 'Asia/Pontianak', 'Asia/Pyongyang', 'Asia/Qatar', 'Asia/Qostanay', 'Asia/Qyzylorda', 'Asia/Riyadh', 'Asia/Sakhalin', 'Asia/Samarkand', 'Asia/Seoul', 'Asia/Shanghai', 'Asia/Singapore', 'Asia/Srednekolymsk', 'Asia/Taipei', 'Asia/Tashkent', 'Asia/Tbilisi', 'Asia/Tehran', 'Asia/Thimphu', 'Asia/Tokyo', 'Asia/Tomsk', 'Asia/Ulaanbaatar', 'Asia/Urumqi', 'Asia/Ust-Nera', 'Asia/Vientiane', 'Asia/Vladivostok', 'Asia/Yakutsk', 'Asia/Yangon', 'Asia/Yekaterinburg', 'Asia/Yerevan', 'Atlantic/Azores', 'Atlantic/Bermuda', 'Atlantic/Canary', 'Atlantic/Cape_Verde', 'Atlantic/Faroe', 'Atlantic/Madeira', 'Atlantic/Reykjavik', 'Atlantic/South_Georgia', 'Atlantic/St_Helena', 'Atlantic/Stanley', 'Australia/Adelaide', 'Australia/Brisbane', 'Australia/Broken_Hill', 'Australia/Darwin', 'Australia/Eucla', 'Australia/Hobart', 'Australia/Lindeman', 'Australia/Lord_Howe', 'Australia/Melbourne', 'Australia/Perth', 'Australia/Sydney', 'Canada/Atlantic', 'Canada/Central', 'Canada/Eastern', 'Canada/Mountain', 'Canada/Newfoundland', 'Canada/Pacific', 'Europe/Amsterdam', 'Europe/Andorra', 'Europe/Astrakhan', 'Europe/Athens', 'Europe/Belgrade', 'Europe/Berlin', 'Europe/Bratislava', 'Europe/Brussels', 'Europe/Bucharest', 'Europe/Budapest', 'Europe/Busingen', 'Europe/Chisinau', 'Europe/Copenhagen', 'Europe/Dublin', 'Europe/Gibraltar', 'Europe/Guernsey', 'Europe/Helsinki', 'Europe/Isle_of_Man', 'Europe/Istanbul', 'Europe/Jersey', 'Europe/Kaliningrad', 'Europe/Kiev', 'Europe/Kirov', 'Europe/Lisbon', 'Europe/Ljubljana', 'Europe/London', 'Europe/Luxembourg', 'Europe/Madrid', 'Europe/Malta', 'Europe/Mariehamn', 'Europe/Minsk', 'Europe/Monaco', 'Europe/Moscow', 'Europe/Oslo', 'Europe/Paris', 'Europe/Podgorica', 'Europe/Prague', 'Europe/Riga', 'Europe/Rome', 'Europe/Samara', 'Europe/San_Marino', 'Europe/Sarajevo', 'Europe/Saratov', 'Europe/Simferopol', 'Europe/Skopje', 'Europe/Sofia', 'Europe/Stockholm', 'Europe/Tallinn', 'Europe/Tirane', 'Europe/Ulyanovsk', 'Europe/Uzhgorod', 'Europe/Vaduz', 'Europe/Vatican', 'Europe/Vienna', 'Europe/Vilnius', 'Europe/Volgograd', 'Europe/Warsaw', 'Europe/Zagreb', 'Europe/Zaporozhye', 'Europe/Zurich', 'GMT', 'Indian/Antananarivo', 'Indian/Chagos', 'Indian/Christmas', 'Indian/Cocos', 'Indian/Comoro', 'Indian/Kerguelen', 'Indian/Mahe', 'Indian/Maldives', 'Indian/Mauritius', 'Indian/Mayotte', 'Indian/Reunion', 'Pacific/Apia', 'Pacific/Auckland', 'Pacific/Bougainville', 'Pacific/Chatham', 'Pacific/Chuuk', 'Pacific/Easter', 'Pacific/Efate', 'Pacific/Fakaofo', 'Pacific/Fiji', 'Pacific/Funafuti', 'Pacific/Galapagos', 'Pacific/Gambier', 'Pacific/Guadalcanal', 'Pacific/Guam', 'Pacific/Honolulu', 'Pacific/Kanton', 'Pacific/Kiritimati', 'Pacific/Kosrae', 'Pacific/Kwajalein', 'Pacific/Majuro', 'Pacific/Marquesas', 'Pacific/Midway', 'Pacific/Nauru', 'Pacific/Niue', 'Pacific/Norfolk', 'Pacific/Noumea', 'Pacific/Pago_Pago', 'Pacific/Palau', 'Pacific/Pitcairn', 'Pacific/Pohnpei', 'Pacific/Port_Moresby', 'Pacific/Rarotonga', 'Pacific/Saipan', 'Pacific/Tahiti', 'Pacific/Tarawa', 'Pacific/Tongatapu', 'Pacific/Wake', 'Pacific/Wallis', 'US/Alaska', 'US/Arizona', 'US/Central', 'US/Eastern', 'US/Hawaii', 'US/Mountain', 'US/Pacific', 'UTC']}])), <traceback object at 0x00000241101D9FC0>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 862, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'TIME_ZONE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 868, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'TIME_ZONE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 876, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'TIME_ZONE'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    return template.render(context, self._request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 176, in render
+    return self._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 153, in render
+    return compiled_parent._render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 168, in _render
+    return self.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 977, in render
+    return SafeString(''.join([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
+    node.render_annotated(context) for node in self
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
+    return self.render(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 1038, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 722, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 829, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\base.py", line 881, in _resolve_lookup
+    raise VariableDoesNotExist("Failed lookup for key "
+django.template.base.VariableDoesNotExist: Failed lookup for key [TIME_ZONE] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'paginator': <django.core.paginator.Paginator object at 0x00000241101995A0>, 'page_obj': <Page 1 of 2>, 'is_paginated': True, 'object_list': <MultilingualQuerySet [<Post: , рейт 0, дата 04/16/2022, 22:22:08>, <Post: sfghsr, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Named the best products to increase testosterone levels, рейт 6, дата 01/26/2022, 17:11:22>, <Post: The Russian futsal team defeated the Croats at the European Championship, рейт 5, дата 01/26/2022, 17:10:32>, <Post: The Russians were advised the best products to strengthen joints, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Scientists explain how the ocean appeared on Earth, рейт 8, дата 01/26/2022, 17:06:11>, <Post: Roskosmos is working on a version of the Angara with returnable blocks, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Scientists have changed the forecast about the evolution of the Earth, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Healthy lifestyle elements, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Babikov won the silver of the European Championship in the individual race, рейт 4, дата 01/26/2022, 16:57:11>]>, 'news': <MultilingualQuerySet [<Post: , рейт 0, дата 04/16/2022, 22:22:08>, <Post: sfghsr, рейт 0, дата 04/16/2022, 22:19:25>, <Post: Named the best products to increase testosterone levels, рейт 6, дата 01/26/2022, 17:11:22>, <Post: The Russian futsal team defeated the Croats at the European Championship, рейт 5, дата 01/26/2022, 17:10:32>, <Post: The Russians were advised the best products to strengthen joints, рейт 7, дата 01/26/2022, 17:09:17>, <Post: Scientists explain how the ocean appeared on Earth, рейт 8, дата 01/26/2022, 17:06:11>, <Post: Roskosmos is working on a version of the Angara with returnable blocks, рейт 7, дата 01/26/2022, 17:04:52>, <Post: Scientists have changed the forecast about the evolution of the Earth, рейт 6, дата 01/26/2022, 17:02:54>, <Post: Healthy lifestyle elements, рейт 4, дата 01/26/2022, 16:59:09>, <Post: Babikov won the silver of the European Championship in the individual race, рейт 4, дата 01/26/2022, 16:57:11>]>, 'view': <news.views.PostsList object at 0x0000024110198730>, 'is_not_author': False, 'categories': <MultilingualQuerySet [<Category: Education>, <Category: Sport>, <Category: Politics>, <Category: Health>, <Category: Science>]>, 'current_time': datetime.datetime(2022, 4, 17, 5, 45, 29, 986219, tzinfo=zoneinfo.ZoneInfo(key='Pacific/Marquesas')), 'timezones': ['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers', 'Africa/Asmara', 'Africa/Bamako', 'Africa/Bangui', 'Africa/Banjul', 'Africa/Bissau', 'Africa/Blantyre', 'Africa/Brazzaville', 'Africa/Bujumbura', 'Africa/Cairo', 'Africa/Casablanca', 'Africa/Ceuta', 'Africa/Conakry', 'Africa/Dakar', 'Africa/Dar_es_Salaam', 'Africa/Djibouti', 'Africa/Douala', 'Africa/El_Aaiun', 'Africa/Freetown', 'Africa/Gaborone', 'Africa/Harare', 'Africa/Johannesburg', 'Africa/Juba', 'Africa/Kampala', 'Africa/Khartoum', 'Africa/Kigali', 'Africa/Kinshasa', 'Africa/Lagos', 'Africa/Libreville', 'Africa/Lome', 'Africa/Luanda', 'Africa/Lubumbashi', 'Africa/Lusaka', 'Africa/Malabo', 'Africa/Maputo', 'Africa/Maseru', 'Africa/Mbabane', 'Africa/Mogadishu', 'Africa/Monrovia', 'Africa/Nairobi', 'Africa/Ndjamena', 'Africa/Niamey', 'Africa/Nouakchott', 'Africa/Ouagadougou', 'Africa/Porto-Novo', 'Africa/Sao_Tome', 'Africa/Tripoli', 'Africa/Tunis', 'Africa/Windhoek', 'America/Adak', 'America/Anchorage', 'America/Anguilla', 'America/Antigua', 'America/Araguaina', 'America/Argentina/Buenos_Aires', 'America/Argentina/Catamarca', 'America/Argentina/Cordoba', 'America/Argentina/Jujuy', 'America/Argentina/La_Rioja', 'America/Argentina/Mendoza', 'America/Argentina/Rio_Gallegos', 'America/Argentina/Salta', 'America/Argentina/San_Juan', 'America/Argentina/San_Luis', 'America/Argentina/Tucuman', 'America/Argentina/Ushuaia', 'America/Aruba', 'America/Asuncion', 'America/Atikokan', 'America/Bahia', 'America/Bahia_Banderas', 'America/Barbados', 'America/Belem', 'America/Belize', 'America/Blanc-Sablon', 'America/Boa_Vista', 'America/Bogota', 'America/Boise', 'America/Cambridge_Bay', 'America/Campo_Grande', 'America/Cancun', 'America/Caracas', 'America/Cayenne', 'America/Cayman', 'America/Chicago', 'America/Chihuahua', 'America/Costa_Rica', 'America/Creston', 'America/Cuiaba', 'America/Curacao', 'America/Danmarkshavn', 'America/Dawson', 'America/Dawson_Creek', 'America/Denver', 'America/Detroit', 'America/Dominica', 'America/Edmonton', 'America/Eirunepe', 'America/El_Salvador', 'America/Fort_Nelson', 'America/Fortaleza', 'America/Glace_Bay', 'America/Goose_Bay', 'America/Grand_Turk', 'America/Grenada', 'America/Guadeloupe', 'America/Guatemala', 'America/Guayaquil', 'America/Guyana', 'America/Halifax', 'America/Havana', 'America/Hermosillo', 'America/Indiana/Indianapolis', 'America/Indiana/Knox', 'America/Indiana/Marengo', 'America/Indiana/Petersburg', 'America/Indiana/Tell_City', 'America/Indiana/Vevay', 'America/Indiana/Vincennes', 'America/Indiana/Winamac', 'America/Inuvik', 'America/Iqaluit', 'America/Jamaica', 'America/Juneau', 'America/Kentucky/Louisville', 'America/Kentucky/Monticello', 'America/Kralendijk', 'America/La_Paz', 'America/Lima', 'America/Los_Angeles', 'America/Lower_Princes', 'America/Maceio', 'America/Managua', 'America/Manaus', 'America/Marigot', 'America/Martinique', 'America/Matamoros', 'America/Mazatlan', 'America/Menominee', 'America/Merida', 'America/Metlakatla', 'America/Mexico_City', 'America/Miquelon', 'America/Moncton', 'America/Monterrey', 'America/Montevideo', 'America/Montserrat', 'America/Nassau', 'America/New_York', 'America/Nipigon', 'America/Nome', 'America/Noronha', 'America/North_Dakota/Beulah', 'America/North_Dakota/Center', 'America/North_Dakota/New_Salem', 'America/Nuuk', 'America/Ojinaga', 'America/Panama', 'America/Pangnirtung', 'America/Paramaribo', 'America/Phoenix', 'America/Port-au-Prince', 'America/Port_of_Spain', 'America/Porto_Velho', 'America/Puerto_Rico', 'America/Punta_Arenas', 'America/Rainy_River', 'America/Rankin_Inlet', 'America/Recife', 'America/Regina', 'America/Resolute', 'America/Rio_Branco', 'America/Santarem', 'America/Santiago', 'America/Santo_Domingo', 'America/Sao_Paulo', 'America/Scoresbysund', 'America/Sitka', 'America/St_Barthelemy', 'America/St_Johns', 'America/St_Kitts', 'America/St_Lucia', 'America/St_Thomas', 'America/St_Vincent', 'America/Swift_Current', 'America/Tegucigalpa', 'America/Thule', 'America/Thunder_Bay', 'America/Tijuana', 'America/Toronto', 'America/Tortola', 'America/Vancouver', 'America/Whitehorse', 'America/Winnipeg', 'America/Yakutat', 'America/Yellowknife', 'Antarctica/Casey', 'Antarctica/Davis', 'Antarctica/DumontDUrville', 'Antarctica/Macquarie', 'Antarctica/Mawson', 'Antarctica/McMurdo', 'Antarctica/Palmer', 'Antarctica/Rothera', 'Antarctica/Syowa', 'Antarctica/Troll', 'Antarctica/Vostok', 'Arctic/Longyearbyen', 'Asia/Aden', 'Asia/Almaty', 'Asia/Amman', 'Asia/Anadyr', 'Asia/Aqtau', 'Asia/Aqtobe', 'Asia/Ashgabat', 'Asia/Atyrau', 'Asia/Baghdad', 'Asia/Bahrain', 'Asia/Baku', 'Asia/Bangkok', 'Asia/Barnaul', 'Asia/Beirut', 'Asia/Bishkek', 'Asia/Brunei', 'Asia/Chita', 'Asia/Choibalsan', 'Asia/Colombo', 'Asia/Damascus', 'Asia/Dhaka', 'Asia/Dili', 'Asia/Dubai', 'Asia/Dushanbe', 'Asia/Famagusta', 'Asia/Gaza', 'Asia/Hebron', 'Asia/Ho_Chi_Minh', 'Asia/Hong_Kong', 'Asia/Hovd', 'Asia/Irkutsk', 'Asia/Jakarta', 'Asia/Jayapura', 'Asia/Jerusalem', 'Asia/Kabul', 'Asia/Kamchatka', 'Asia/Karachi', 'Asia/Kathmandu', 'Asia/Khandyga', 'Asia/Kolkata', 'Asia/Krasnoyarsk', 'Asia/Kuala_Lumpur', 'Asia/Kuching', 'Asia/Kuwait', 'Asia/Macau', 'Asia/Magadan', 'Asia/Makassar', 'Asia/Manila', 'Asia/Muscat', 'Asia/Nicosia', 'Asia/Novokuznetsk', 'Asia/Novosibirsk', 'Asia/Omsk', 'Asia/Oral', 'Asia/Phnom_Penh', 'Asia/Pontianak', 'Asia/Pyongyang', 'Asia/Qatar', 'Asia/Qostanay', 'Asia/Qyzylorda', 'Asia/Riyadh', 'Asia/Sakhalin', 'Asia/Samarkand', 'Asia/Seoul', 'Asia/Shanghai', 'Asia/Singapore', 'Asia/Srednekolymsk', 'Asia/Taipei', 'Asia/Tashkent', 'Asia/Tbilisi', 'Asia/Tehran', 'Asia/Thimphu', 'Asia/Tokyo', 'Asia/Tomsk', 'Asia/Ulaanbaatar', 'Asia/Urumqi', 'Asia/Ust-Nera', 'Asia/Vientiane', 'Asia/Vladivostok', 'Asia/Yakutsk', 'Asia/Yangon', 'Asia/Yekaterinburg', 'Asia/Yerevan', 'Atlantic/Azores', 'Atlantic/Bermuda', 'Atlantic/Canary', 'Atlantic/Cape_Verde', 'Atlantic/Faroe', 'Atlantic/Madeira', 'Atlantic/Reykjavik', 'Atlantic/South_Georgia', 'Atlantic/St_Helena', 'Atlantic/Stanley', 'Australia/Adelaide', 'Australia/Brisbane', 'Australia/Broken_Hill', 'Australia/Darwin', 'Australia/Eucla', 'Australia/Hobart', 'Australia/Lindeman', 'Australia/Lord_Howe', 'Australia/Melbourne', 'Australia/Perth', 'Australia/Sydney', 'Canada/Atlantic', 'Canada/Central', 'Canada/Eastern', 'Canada/Mountain', 'Canada/Newfoundland', 'Canada/Pacific', 'Europe/Amsterdam', 'Europe/Andorra', 'Europe/Astrakhan', 'Europe/Athens', 'Europe/Belgrade', 'Europe/Berlin', 'Europe/Bratislava', 'Europe/Brussels', 'Europe/Bucharest', 'Europe/Budapest', 'Europe/Busingen', 'Europe/Chisinau', 'Europe/Copenhagen', 'Europe/Dublin', 'Europe/Gibraltar', 'Europe/Guernsey', 'Europe/Helsinki', 'Europe/Isle_of_Man', 'Europe/Istanbul', 'Europe/Jersey', 'Europe/Kaliningrad', 'Europe/Kiev', 'Europe/Kirov', 'Europe/Lisbon', 'Europe/Ljubljana', 'Europe/London', 'Europe/Luxembourg', 'Europe/Madrid', 'Europe/Malta', 'Europe/Mariehamn', 'Europe/Minsk', 'Europe/Monaco', 'Europe/Moscow', 'Europe/Oslo', 'Europe/Paris', 'Europe/Podgorica', 'Europe/Prague', 'Europe/Riga', 'Europe/Rome', 'Europe/Samara', 'Europe/San_Marino', 'Europe/Sarajevo', 'Europe/Saratov', 'Europe/Simferopol', 'Europe/Skopje', 'Europe/Sofia', 'Europe/Stockholm', 'Europe/Tallinn', 'Europe/Tirane', 'Europe/Ulyanovsk', 'Europe/Uzhgorod', 'Europe/Vaduz', 'Europe/Vatican', 'Europe/Vienna', 'Europe/Vilnius', 'Europe/Volgograd', 'Europe/Warsaw', 'Europe/Zagreb', 'Europe/Zaporozhye', 'Europe/Zurich', 'GMT', 'Indian/Antananarivo', 'Indian/Chagos', 'Indian/Christmas', 'Indian/Cocos', 'Indian/Comoro', 'Indian/Kerguelen', 'Indian/Mahe', 'Indian/Maldives', 'Indian/Mauritius', 'Indian/Mayotte', 'Indian/Reunion', 'Pacific/Apia', 'Pacific/Auckland', 'Pacific/Bougainville', 'Pacific/Chatham', 'Pacific/Chuuk', 'Pacific/Easter', 'Pacific/Efate', 'Pacific/Fakaofo', 'Pacific/Fiji', 'Pacific/Funafuti', 'Pacific/Galapagos', 'Pacific/Gambier', 'Pacific/Guadalcanal', 'Pacific/Guam', 'Pacific/Honolulu', 'Pacific/Kanton', 'Pacific/Kiritimati', 'Pacific/Kosrae', 'Pacific/Kwajalein', 'Pacific/Majuro', 'Pacific/Marquesas', 'Pacific/Midway', 'Pacific/Nauru', 'Pacific/Niue', 'Pacific/Norfolk', 'Pacific/Noumea', 'Pacific/Pago_Pago', 'Pacific/Palau', 'Pacific/Pitcairn', 'Pacific/Pohnpei', 'Pacific/Port_Moresby', 'Pacific/Rarotonga', 'Pacific/Saipan', 'Pacific/Tahiti', 'Pacific/Tarawa', 'Pacific/Tongatapu', 'Pacific/Wake', 'Pacific/Wallis', 'US/Alaska', 'US/Arizona', 'US/Central', 'US/Eastern', 'US/Hawaii', 'US/Mountain', 'US/Pacific', 'UTC']}]
+2022-04-17 18:15:30,160 ERROR "GET /news/ HTTP/1.1" 500 422638 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None

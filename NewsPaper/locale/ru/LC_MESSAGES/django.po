@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-14 23:32+0300\n"
+"POT-Creation-Date: 2022-04-15 19:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,7 +81,7 @@ msgstr "Сделать первичным"
 msgid "Re-send Verification"
 msgstr "Отправить подтверждение"
 
-#: .\templates\allauth\account\email.html:36 .\templates\news\news.html:49
+#: .\templates\allauth\account\email.html:36 .\templates\news\news.html:51
 #: .\templates\news\post.html:36 .\templates\news\post_category.html:47
 msgid "Remove"
 msgstr "Удалить"
@@ -406,62 +406,61 @@ msgstr "Удалить пост"
 msgid "Are you sure you want to delete the post?"
 msgstr "Вы уверены, что хотите удалить пост?"
 
-#: .\templates\news\delete_post.html:14 .\templates\news\news.html:34
+#: .\templates\news\delete_post.html:14 .\templates\news\news.html:36
 #: .\templates\news\post_category.html:32 .\templates\news\search.html:26
 msgid "Title"
 msgstr "Заголовок"
 
-#: .\templates\news\delete_post.html:17 .\templates\news\news.html:37
+#: .\templates\news\delete_post.html:17 .\templates\news\news.html:39
 #: .\templates\news\post_category.html:35 .\templates\news\search.html:29
 msgid "Publish date"
 msgstr "Дата публикации"
 
-#: .\templates\news\delete_post.html:20 .\templates\news\news.html:40
+#: .\templates\news\delete_post.html:20 .\templates\news\news.html:42
 #: .\templates\news\post_category.html:38 .\templates\news\search.html:32
 msgid "Summary"
 msgstr "Краткое содержание"
 
-#: .\templates\news\news.html:8 .\templates\news\post_category.html:8
+#: .\templates\news\news.html:10 .\templates\news\post_category.html:8
 msgid "News"
 msgstr "Новости"
 
-#: .\templates\news\news.html:13
+#: .\templates\news\news.html:15
 msgid "All posts"
 msgstr "Все посты"
 
-#: .\templates\news\news.html:14
-#, python-format
-msgid " Total: %(news|items_counter)s "
-msgstr " Всего: %(news|items_counter)s "
+#: .\templates\news\news.html:16
+msgid " Total: %(amount)s "
+msgstr " Всего: %(amount)s "
 
-#: .\templates\news\news.html:18
+#: .\templates\news\news.html:20
 msgid "Categories:"
 msgstr "Категории:"
 
-#: .\templates\news\news.html:27 .\templates\news\post_category.html:25
+#: .\templates\news\news.html:29 .\templates\news\post_category.html:25
 #: .\templates\sign\profile.html:47
 msgid "Become author!"
 msgstr "Стать автором!"
 
-#: .\templates\news\news.html:48 .\templates\news\post.html:35
+#: .\templates\news\news.html:50 .\templates\news\post.html:35
 #: .\templates\news\post_category.html:46
 msgid "Edit"
 msgstr "Редактировать"
 
-#: .\templates\news\news.html:62 .\templates\news\post_category.html:60
+#: .\templates\news\news.html:64 .\templates\news\post_category.html:60
 msgid "Add new post"
 msgstr "Добавить новый пост"
 
-#: .\templates\news\news.html:65 .\templates\news\post_category.html:63
+#: .\templates\news\news.html:67 .\templates\news\post_category.html:63
 #: .\templates\news\search.html:50
 msgid "Nothing here"
 msgstr "Нет статей"
 
-#: .\templates\news\news.html:72 .\templates\news\post_category.html:70
+#: .\templates\news\news.html:74 .\templates\news\post_category.html:70
 msgid "First"
 msgstr "Первая"
 
-#: .\templates\news\news.html:88 .\templates\news\post_category.html:86
+#: .\templates\news\news.html:90 .\templates\news\post_category.html:86
 msgid "Last"
 msgstr "Последняя"
 
@@ -470,24 +469,20 @@ msgid "News update mail"
 msgstr "Письмо о новых постах"
 
 #: .\templates\news\news_update_mail.html:12
-#, python-format
-msgid " Hi, %(user.username)s! "
-msgstr " Привет, %(user.username)s! "
+msgid " Hi, %(username)s! "
+msgstr " Привет, %(username)s! "
 
 #: .\templates\news\news_update_mail.html:13
-#, python-format
-msgid " New post from author %(post.author)s category(-es) %(cat_mess)s "
-msgstr " Новый пост от автора %(post.author)s категории(-ий) %(cat_mess)s "
+msgid " New post from author %(author)s category(-es) %(cat_mess)s "
+msgstr " Новый пост от автора %(author)s категории(-ий) %(cat_mess)s "
 
 #: .\templates\news\news_update_mail.html:14
-#, python-format
-msgid " Title: %(post.title)s "
-msgstr " Заголовок: %(post.title)s "
+msgid " Title: %(post_title)s "
+msgstr " Заголовок: %(post_title)s "
 
 #: .\templates\news\news_update_mail.html:15
-#, python-format
-msgid " Summary: %(post.text|truncatechars:50)s "
-msgstr " Краткое содержание: %(post.text|truncatechars:50)s "
+msgid " Summary: %(post_text)s "
+msgstr " Краткое содержание: %(post_text)s "
 
 #: .\templates\news\news_update_mail.html:17
 msgid "Go to post"
@@ -514,9 +509,8 @@ msgid "Text:"
 msgstr "Текст"
 
 #: .\templates\news\post_category.html:13
-#, python-format
-msgid " Posts of the category: %(category_obj.categoryName)s "
-msgstr " Посты категории: %(category_obj.categoryName)s "
+msgid " Posts of the category: %(category_name)s "
+msgstr " Посты категории: %(category_name)s "
 
 #: .\templates\news\search.html:8
 msgid "Search news"
@@ -527,9 +521,8 @@ msgid "Search posts"
 msgstr "Искать посты"
 
 #: .\templates\news\search.html:14
-#, python-format
-msgid " Total: %(news_search|length)s "
-msgstr " Всего: %(news_search|length)s "
+msgid " Total: %(news_total)s "
+msgstr " Всего: %(news_total)s "
 
 #: .\templates\sign\profile.html:10
 msgid "Your Profile"
@@ -558,3 +551,4 @@ msgstr "Редактировать профиль"
 #: .\templates\sign\profile_edit.html:12
 msgid "Change"
 msgstr "Изменить"
+

@@ -1,17 +1,36 @@
 {% extends 'flatpages/default.html' %}
 
 {% load i18n %}
-
+{% load tz %}
 {% load my_filters %}
-
-
 
 {% block title %}
 {% translate "News" %}
 {% endblock title %}
 
-
 {% block content %}
+<main>
+    <!-- Если сейчас больше чем 19 или же меньше 7, то выводим тёмную тему, иначе выводим светлую -->
+    <style>
+         main {background-color: {% if current_time.hour >= 19 or current_time.hour <= 7 %} darkcyan {% else %} powderblue {% endif %};}
+    </style>
+
+    {% get_current_timezone as TIME_ZONE %}
+    {{ TIME_ZONE }}
+    {{ current_time|timezone:TIME_ZONE }} <!-- Отображаем время в выбранном часовом поясе  -->
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="timezone">{% trans "Time zone:" %}</label>
+        <select name="timezone">
+            {% for tz in timezones %}
+            <option value="{{ tz }}"{% if tz == TIME_ZONE %} selected{% endif %}>{{ tz }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="{% trans 'set' %}">
+    </form>
+
+
     <h1>{% translate "All posts" %}</h1>
     <h5>{% blocktranslate with amount=news|items_counter %} Total: {{amount}} {% endblocktranslate %}</h5>
     <br>
@@ -66,6 +85,7 @@
     {% else %}
         <h2>{% translate "Nothing here" %}</h2>
     {% endif %}
+
     <!-- Проверяем что поддерживается постраничный вывод -->
     {% if is_paginated %}
 
@@ -91,4 +111,5 @@
         {% endif %}
 
     {% endif %}
+</main>
 {% endblock content %}

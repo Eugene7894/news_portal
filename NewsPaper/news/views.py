@@ -1,7 +1,11 @@
+import pytz
+
 # from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.cache import cache
+from django.utils import timezone
+from django.shortcuts import redirect
 from .models import Post, Category
 from .filters import NewsFilter
 from .forms import PostForm
@@ -19,7 +23,15 @@ class PostsList(ListView):
         context = super().get_context_data(**kwargs)
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         context['categories'] = Category.objects.all()
+        context['current_time'] = timezone.localtime(timezone.now())
+        context['timezones'] = pytz.common_timezones
         return context
+
+    #  по пост-запросу будем добавлять в сессию часовой пояс, который и будет обрабатываться написанным нами
+    #  ранее middleware в news/middlewares
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/news')
 
 
 class CatPostsList(ListView):
