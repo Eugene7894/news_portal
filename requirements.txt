@@ -19,11 +19,13 @@ django-allauth==0.47.0
 django-apscheduler==0.6.0
 django-filter==21.1
 django-modeltranslation==0.17.5
+djangorestframework==3.13.1
 dnspython==2.2.0
 eventlet==0.33.0
 greenlet==1.1.2
 idna==3.3
 kombu==5.2.3
+Markdown==3.3.6
 oauthlib==3.2.0
 packaging==21.3
 prompt-toolkit==3.0.28

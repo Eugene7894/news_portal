@@ -6,9 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.core.cache import cache
 from django.utils import timezone
 from django.shortcuts import redirect
+from rest_framework import viewsets, permissions
+
 from .models import Post, Category
 from .filters import NewsFilter
 from .forms import PostForm
+from .serializers import PostSerializer
+from .permissions import IsAuthorOrReadOnly
 
 
 class PostsList(ListView):
@@ -23,7 +27,9 @@ class PostsList(ListView):
         context = super().get_context_data(**kwargs)
         context['is_not_author'] = not self.request.user.groups.filter(name='authors').exists()
         context['categories'] = Category.objects.all()
-        context['current_time'] = timezone.localtime(timezone.now())
+        context['current_time'] = timezone.localtime(timezone.now())  # Местное время в текущем часовом поясе
+        # Вы должны использовать местное время только тогда, когда взаимодействуете с людьми, а уровень шаблона
+        # предоставляет фильтры и теги для преобразования даты и времени в часовой пояс по вашему выбору.
         context['timezones'] = pytz.common_timezones
         return context
 
@@ -116,4 +122,30 @@ class PostDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     queryset = Post.objects.all()
     success_url = '/news/'
 
+
+# Вьюсеты для REST API /news, /articles
+class NewsViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthorOrReadOnly, ]
+
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+
+        if not pk:
+            return Post.objects.filter(categoryType=Post.NEWS)
+
+        return Post.objects.filter(pk=pk, categoryType=Post.NEWS)
+
+
+class ArticlesViewSet(viewsets.ModelViewSet):
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthorOrReadOnly, ]
+
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+
+        if not pk:
+            return Post.objects.filter(categoryType=Post.ARTICLES)
+
+        return Post.objects.filter(pk=pk, categoryType=Post.ARTICLES)
 

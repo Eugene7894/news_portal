@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.flatpages',
     'django_filters',
 
+    'rest_framework',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -59,6 +61,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
     'django_apscheduler',
+
 ]
 
 SITE_ID = 1
@@ -312,4 +315,12 @@ CACHES = {
         'LOCATION': os.path.join(BASE_DIR, 'cache_files'),  # Указываем, куда будем сохранять кэшируемые файлы!
         # Не забываем создать папку cache_files внутри папки с manage.py!
     }
+}
+
+
+# Сюда можно добавлять различные параметры по умолчанию для DRF
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3
+    # подключаем пагинацию в API размером в 3 объекта
 }

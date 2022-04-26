@@ -15,11 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from news import views
+
+router = routers.DefaultRouter()
+router.register(r'news', views.NewsViewSet, basename='news')
+router.register(r'articles', views.ArticlesViewSet, basename='articles')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('pages/', include('django.contrib.flatpages.urls')),
     path('i18n/', include('django.conf.urls.i18n')),  # подключаем встроенные эндопинты для работы с локализацией
+    path('api/v1/', include(router.urls)),
+    path('api/v1/drf-auth/', include('rest_framework.urls', namespace='news')),
     path('news/', include('news.urls')),
     path('sign/', include('sign.urls')),
     path('accounts/', include('allauth.urls')),
