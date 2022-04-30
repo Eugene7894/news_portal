@@ -78,6 +78,7 @@ MIDDLEWARE = [
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 
     'news.middlewares.TimezoneMiddleware',
+    # 'crum.CurrentRequestUserMiddleware',
 ]
 
 LOGGING = {

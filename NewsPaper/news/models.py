@@ -1,3 +1,4 @@
+from crum import get_current_user
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Sum
@@ -74,6 +75,9 @@ class Post(models.Model):
         return f'/news/{self.id}'
 
     def save(self, *args, **kwargs):
+        # user = get_current_user()
+        # self.author.authorUser = user
+
         super().save(*args, **kwargs)  # сначала вызываем метод родителя, чтобы объект сохранился
         cache.delete(f'post-{self.pk}')  # затем удаляем его из кэша, чтобы сбросить его
 

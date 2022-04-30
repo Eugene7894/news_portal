@@ -147,5 +147,11 @@ class ArticlesViewSet(viewsets.ModelViewSet):
         if not pk:
             return Post.objects.filter(categoryType=Post.ARTICLES)
 
-        return Post.objects.filter(pk=pk, categoryType=Post.ARTICLES)
+        queryset = Post.objects.filter(pk=pk, categoryType=Post.ARTICLES)
+        user_id = self.request.query_params.get('user_id', None)
+
+        if user_id is not None:
+            queryset = queryset.objects.filter(author__authorUser_id=user_id)
+
+        return queryset
 

@@ -1396,3 +1396,492 @@ Traceback (most recent call last):
     raise ImproperlyConfigured(msg % self.view_name)
 django.core.exceptions.ImproperlyConfigured: Could not resolve URL for hyperlinked relationship using view name "post-detail". You may have failed to include the related model in your API, or incorrectly configured the `lookup_field` attribute on this field.
 2022-04-27 01:18:27,740 ERROR "GET /api/v1/news/ HTTP/1.1" 500 164544 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-27 01:58:18,345 ERROR Internal Server Error: /api/v1/articles/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'ValueError'>, ValueError('Cannot assign "<SimpleLazyObject: <User: admin>>": "Post.author" must be a "Author" instance.'), <traceback object at 0x00000264241E9140>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 455, in create
+    obj = self.model(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\translator.py", line 284, in new_init
+    old_init(self, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\base.py", line 489, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 215, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<SimpleLazyObject: <User: admin>>": "Post.author" must be a "Author" instance.
+2022-04-27 01:58:18,355 ERROR "POST /api/v1/articles/ HTTP/1.1" 500 155318 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 15:59:45,617 ERROR Internal Server Error: /api/v1/articles/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'ValueError'>, ValueError('Cannot assign "<SimpleLazyObject: <User: admin>>": "Post.author" must be a "Author" instance.'), <traceback object at 0x000001A7BFED2C40>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 455, in create
+    obj = self.model(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\translator.py", line 284, in new_init
+    old_init(self, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\base.py", line 489, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 215, in __set__
+    raise ValueError(
+ValueError: Cannot assign "<SimpleLazyObject: <User: admin>>": "Post.author" must be a "Author" instance.
+2022-04-30 15:59:45,626 ERROR "POST /api/v1/articles/ HTTP/1.1" 500 155453 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 16:13:05,328 ERROR Internal Server Error: /api/v1/articles/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'AssertionError'>, AssertionError("The field 'authorUser' was declared on serializer AuthorSerializer, but has not been included in the 'fields' option."), <traceback object at 0x000001ABE37CDF80>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
+    response = response.render()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\template\response.py", line 105, in render
+    self.content = self.rendered_content
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\renderers.py", line 724, in render
+    context = self.get_context(data, accepted_media_type, renderer_context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\renderers.py", line 655, in get_context
+    raw_data_post_form = self.get_raw_data_form(data, view, 'POST', request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\renderers.py", line 563, in get_raw_data_form
+    data = serializer.data.copy()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 257, in data
+    self._data = self.get_initial()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 403, in get_initial
+    return OrderedDict([
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 404, in <listcomp>
+    (field.field_name, field.get_initial())
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 405, in get_initial
+    for field in self.fields.values()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\functional.py", line 48, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 356, in fields
+    for key, value in self.get_fields().items():
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 1052, in get_fields
+    field_names = self.get_field_names(declared_fields, info)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 1148, in get_field_names
+    assert field_name in fields, (
+AssertionError: The field 'authorUser' was declared on serializer AuthorSerializer, but has not been included in the 'fields' option.
+2022-04-30 16:13:05,336 ERROR "POST /api/v1/articles/ HTTP/1.1" 500 133501 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 16:21:31,335 ERROR Internal Server Error: /api/v1/articles/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'django.db.utils.IntegrityError'>, IntegrityError('NOT NULL constraint failed: news_post.author_id'), <traceback object at 0x0000029153D21AC0>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 416, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: news_post.author_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 77, in save
+    super().save(*args, **kwargs)  # сначала вызываем метод родителя, чтобы объект сохранился
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\base.py", line 743, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\base.py", line 780, in save_base
+    updated = self._save_table(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\base.py", line 885, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\base.py", line 923, in _do_insert
+    return manager._insert(
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 1301, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1441, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 416, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: news_post.author_id
+2022-04-30 16:21:31,349 ERROR "POST /api/v1/articles/ HTTP/1.1" 500 229501 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 16:50:24,889 ERROR Internal Server Error: /api/v1/articles/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x0000019E58480080>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 16:50:24,897 ERROR "POST /api/v1/articles/ HTTP/1.1" 500 148417 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 16:51:35,363 ERROR Internal Server Error: /api/v1/news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x0000019E58650580>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 16:51:35,369 ERROR "POST /api/v1/news/ HTTP/1.1" 500 148283 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 16:54:38,554 ERROR Internal Server Error: /api/v1/news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x0000029D54E461C0>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 16:54:38,563 ERROR "POST /api/v1/news/ HTTP/1.1" 500 148293 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 16:54:41,798 ERROR Internal Server Error: /api/v1/news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x0000029D54CFAA00>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 16:54:41,805 ERROR "POST /api/v1/news/ HTTP/1.1" 500 148293 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 17:00:31,265 ERROR Internal Server Error: /api/v1/news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x000002A831B60180>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 17:00:31,273 ERROR "POST /api/v1/news/ HTTP/1.1" 500 145804 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 17:00:48,084 ERROR Internal Server Error: /api/v1/news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x000002A831D1C140>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 17:00:48,090 ERROR "POST /api/v1/news/ HTTP/1.1" 500 145329 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 17:16:50,290 ERROR Internal Server Error: /api/v1/news/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'news.models.Post.author.RelatedObjectDoesNotExist'>, RelatedObjectDoesNotExist('Post has no author.'), <traceback object at 0x000002012F74E280>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 24, in perform_create
+    serializer.save()
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 962, in create
+    instance = ModelClass._default_manager.create(**validated_data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\modeltranslation\manager.py", line 390, in create
+    return super(MultilingualQuerySet, self).create(**kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\query.py", line 457, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python_projects\news_portal\NewsPaper\news\models.py", line 79, in save
+    self.author.authorUser = user
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\db\models\fields\related_descriptors.py", line 197, in __get__
+    raise self.RelatedObjectDoesNotExist(
+news.models.Post.author.RelatedObjectDoesNotExist: Post has no author.
+2022-04-30 17:16:50,298 ERROR "POST /api/v1/news/ HTTP/1.1" 500 147363 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-04-30 17:16:55,067 ERROR Internal Server Error: /api/v1/articles/ C:\Python_projects\news_portal\venv\lib\site-packages\django\utils\log.py (<class 'TypeError'>, TypeError("int() argument must be a string, a bytes-like object or a real number, not 'Author'"), <traceback object at 0x000002012F70C600>)
+Traceback (most recent call last):
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\django\views\decorators\csrf.py", line 54, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\mixins.py", line 43, in list
+    return self.get_paginated_response(serializer.data)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    return [
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 687, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "C:\Python_projects\news_portal\venv\lib\site-packages\rest_framework\fields.py", line 963, in to_representation
+    return int(value)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'Author'
+2022-04-30 17:16:55,074 ERROR "GET /api/v1/articles/ HTTP/1.1" 500 132464 C:\Python_projects\news_portal\venv\lib\site-packages\django\core\servers\basehttp.py None
